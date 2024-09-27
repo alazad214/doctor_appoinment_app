@@ -38,11 +38,7 @@ class CustomAppBar extends StatelessWidget {
           const Spacer(),
           IconButton(
             onPressed: () => Get.to(() => const SearchScreen()),
-            icon: SvgPicture.asset(searchIcon),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(messageIcon, color: primaryColor),
+            icon: SvgPicture.asset(searchIcon, color: primaryColor),
           ),
         ],
       ),
