@@ -31,33 +31,28 @@ class ArticleCard extends StatelessWidget {
                   child: InkWell(
                     onTap: () {},
                     child: Container(
-                      height: screenSize.height / 4.5,
+                      height: 160,
                       width: screenSize.width / 1.3,
                       clipBehavior: Clip.antiAlias,
                       alignment: Alignment.bottomCenter,
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8.0)),
                       child: Stack(
                         children: [
                           // Background image
-                          Image.asset(
-                            'assets/images/Serena_Gome.png',
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),
+                          Image.asset('assets/images/Serena_Gome.png',
+                              width: double.infinity, fit: BoxFit.cover),
                           // Gradient overlay
                           Container(
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [
-                                  Colors.black.withOpacity(0.7),
-                                  Colors.black.withOpacity(0.1),
-                                ],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              ),
+                                  colors: [
+                                    Colors.white.withOpacity(0.7),
+                                    Colors.white.withOpacity(0.1),
+                                  ],
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter),
                             ),
                           ),
                           // Content overlay
@@ -69,10 +64,9 @@ class ArticleCard extends StatelessWidget {
                                 Text(
                                   'Nutrition',
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: primaryColor,
-                                  ),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: primaryColor),
                                 ),
                                 Spacer(),
                                 Text(
@@ -80,18 +74,15 @@ class ArticleCard extends StatelessWidget {
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                  ),
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: textColor),
                                 ),
                                 SizedBox(height: 4),
                                 Text(
                                   'September 25, 2024',
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.white70,
-                                  ),
+                                  style:
+                                      TextStyle(fontSize: 12, color: textColor),
                                 ),
                               ],
                             ),

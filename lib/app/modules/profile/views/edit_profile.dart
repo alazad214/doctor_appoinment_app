@@ -49,6 +49,7 @@ class EditProfile extends StatelessWidget {
                     const Icon(Icons.logout, size: 40, color: Colors.white),
                     'Update Profile',
                     "Are you sure update your profile?",
+                    "Submit",
                     () {
                       // Define what happens on logout here
                       Navigator.of(context)
