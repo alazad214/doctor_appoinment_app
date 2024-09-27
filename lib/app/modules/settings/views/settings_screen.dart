@@ -69,18 +69,14 @@ class SettingsScreen extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {
                         AppDialog(
-                          context,
-                          const Icon(Icons.logout,
-                              size: 40, color: Colors.white),
-                          'Logout',
-                          "Are you sure you want to logout?",
-                          () {
-                            // Define what happens on logout here
-                            Navigator.of(context)
-                                .pop(); // Close the dialog after performing the action
-                            // Perform logout action (if needed)
-                          },
-                        );
+                            context,
+                            const Icon(Icons.logout,
+                                size: 40, color: Colors.white),
+                            'Logout Now',
+                            "Are you sure you want to logout?",
+                            "Logout", () {
+                          Navigator.of(context).pop();
+                        });
                       },
                       icon: const Icon(Icons.arrow_circle_right_outlined))),
               const SizedBox(height: 30)

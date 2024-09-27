@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import '../../../../models/AvailableDoctor.dart';
-import '../../../../utils/app_icon.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/custom_app_bar.dart';
 import '../../details/views/doctor_details_screen.dart';
-import '../../search/views/search_screen.dart';
-import '../components/docotor_card.dart';
 
 class DoctorsScreen extends StatelessWidget {
   const DoctorsScreen({super.key});
@@ -23,25 +18,118 @@ class DoctorsScreen extends StatelessWidget {
               const CustomAppBar(text: "Available", title: "Specialist"),
               Padding(
                 padding: const EdgeInsets.all(defaultPadding),
-                child: GridView.builder(
+                child: ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: demoAvailableDoctors.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: 0.9,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemBuilder: (context, index) => DoctorCard(
-                    doctor: demoAvailableDoctors[index],
-                    press: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const DoctorDetailsScreen(),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Get.to(const DoctorDetailsScreen());
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: defaultPadding),
+                        padding: const EdgeInsets.all(defaultPadding),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 1,
+                                blurRadius: 2,
+                                offset: const Offset(0, 1)),
+                          ],
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Doctor image
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset('assets/images/profile.jpg',
+                                  width: 80, height: 100, fit: BoxFit.cover),
+                            ),
+                            const SizedBox(width: 15),
+
+                            const Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Al Azad',
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: primaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text('Neurosurgeon',
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold)),
+                                  SizedBox(height: 8),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text.rich(
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            TextSpan(
+                                              text: "Experience: ",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: textColor,
+                                                  fontWeight: FontWeight.bold),
+                                              children: [
+                                                TextSpan(
+                                                  text: '5 Years',
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text.rich(
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                            TextSpan(
+                                              text: "Clinic/Hospital: ",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: textColor,
+                                                  fontWeight: FontWeight.bold),
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      'Sheba Clinic And Hospital ',
+                                                  style: TextStyle(
+                                                      fontSize: 10,
+                                                      color: Colors.grey),
+                                                ),
+                                              ],
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
+                    );
+                  },
                 ),
               ),
             ],

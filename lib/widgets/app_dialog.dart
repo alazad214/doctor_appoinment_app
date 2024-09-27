@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'app_button.dart';
 
 void AppDialog(BuildContext context, Widget child, String title,
-    String subtitle, VoidCallback ontap) {
+    String subtitle, String buttonText, VoidCallback ontap) {
   showDialog(
     context: context,
     barrierDismissible: false,
@@ -64,9 +64,9 @@ void AppDialog(BuildContext context, Widget child, String title,
                     decoration: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Text(
-                      'Logout',
-                      style: TextStyle(
+                    child:  Text(
+                      buttonText,
+                      style: const TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w600),
                     ),
                   )
