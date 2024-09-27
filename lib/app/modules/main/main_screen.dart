@@ -13,7 +13,7 @@ class MainScreen extends StatelessWidget {
   final controller = Get.put(MainController());
 
   final List pages = [
-    HomePage(),
+    const HomePage(),
     const DoctorsScreen(),
     const MyAppointmentScreen(),
     const ProfileScreen(),

@@ -5,10 +5,10 @@ import '../../../../utils/constants.dart';
 
 class DoctorCard extends StatelessWidget {
   const DoctorCard({
-    Key? key,
+    super.key,
     required this.doctor,
     required this.press,
-  }) : super(key: key);
+  });
 
   final AvailableDoctor doctor;
   final VoidCallback press;
@@ -18,10 +18,10 @@ class DoctorCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Container(
-        padding: EdgeInsets.all(defaultPadding),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(defaultPadding),
+        decoration: const BoxDecoration(
           color: Colors.white,
-          borderRadius: const BorderRadius.all(
+          borderRadius: BorderRadius.all(
             Radius.circular(10),
           ),
         ),
@@ -35,42 +35,32 @@ class DoctorCard extends StatelessWidget {
                     doctor.name!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12,
+                    style: const TextStyle(
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: defaultPadding / 4),
+                  const SizedBox(height: defaultPadding / 4),
                   Text(
                     doctor.sector!,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  Spacer(),
-                  Text(
+                  const Spacer(),
+                  const Text(
                     "Experience",
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     "${doctor.experience} Years",
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Spacer(),
-                  Text(
-                    "Patients",
-                    style: TextStyle(
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: const TextStyle(
                       fontSize: 10,
-                    ),
-                  ),
-                  Text(
-                    doctor.patients!,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
