@@ -84,7 +84,7 @@ class DoctorDetailsScreen extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15),
                   child: ElevatedButton(
-                      onPressed: () => Get.to(() => const AppointmentScreen()),
+                      onPressed: () => Get.to(() => AppointmentScreen()),
                       child: const Text("Book an Appoinment")))
             ],
           ),
