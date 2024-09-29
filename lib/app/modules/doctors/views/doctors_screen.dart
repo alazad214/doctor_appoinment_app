@@ -15,7 +15,7 @@ class DoctorsScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              const CustomAppBar(text: "Available", title: "Specialist"),
+              const CustomAppBar(),
               Padding(
                 padding: const EdgeInsets.all(defaultPadding),
                 child: ListView.builder(

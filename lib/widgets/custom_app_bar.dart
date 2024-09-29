@@ -1,4 +1,5 @@
 import 'package:doctor_appointment/utils/app_icon.dart';
+import 'package:doctor_appointment/utils/app_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,11 +9,7 @@ import '../utils/constants.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
-    required this.text,
-    required this.title,
   });
-
-  final String text, title;
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +17,7 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsets.all(defaultPadding),
       child: Row(
         children: [
-          Text.rich(
-            TextSpan(
-              text: "$text\n",
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-              children: [
-                TextSpan(
-                  text: title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
-          ),
+          Image.asset(AppImage.appLogo, height: 50),
           const Spacer(),
           IconButton(
             onPressed: () => Get.to(() => const SearchScreen()),
