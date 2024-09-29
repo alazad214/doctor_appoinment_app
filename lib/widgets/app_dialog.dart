@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'app_button.dart';
 
-void AppDialog(BuildContext context, Widget child, String title,
+void appDialog(BuildContext context, Widget child, String title,
     String subtitle, String buttonText, VoidCallback ontap) {
   showDialog(
     context: context,
@@ -59,15 +59,18 @@ void AppDialog(BuildContext context, Widget child, String title,
                     },
                   ),
                   const SizedBox(width: 10),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10)),
-                    child:  Text(
-                      buttonText,
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.w600),
+                  InkWell(
+                    onTap: ontap,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Text(
+                        buttonText,
+                        style: const TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w600),
+                      ),
                     ),
                   )
                 ],

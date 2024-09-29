@@ -44,7 +44,7 @@ class EditProfile extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: screenSize.width / 4),
               child: ElevatedButton(
                 onPressed: () {
-                  AppDialog(
+                  appDialog(
                     context,
                     const Icon(Icons.logout, size: 40, color: Colors.white),
                     'Update Profile',

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import '../../../utils/constants.dart';
-import '../../logic/controller/main_screen_controller.dart';
+import '../../logic/controller/main controller/main_screen_controller.dart';
 import '../appointment/views/my_appointment_screen.dart';
 import '../doctors/views/doctors_screen.dart';
 import '../home/views/home_screen.dart';

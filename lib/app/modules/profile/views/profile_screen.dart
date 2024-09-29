@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
-            onPressed: () => Get.to(() => const SettingsScreen()),
+            onPressed: () => Get.to(() =>  SettingsScreen()),
             icon: const Icon(
               Icons.settings,
               color: primaryColor,
