@@ -41,6 +41,13 @@ dependencies:
   google_nav_bar: ^5.0.6
   get: ^4.6.6
 
+  #Firebase back-end pacakges-
+  firebase_core: ^2.27.0
+  firebase_auth: ^4.17.8
+  firebase_storage: ^11.6.9
+  cloud_firestore: ^4.15.8
+  firebase_messaging: ^14.7.19
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

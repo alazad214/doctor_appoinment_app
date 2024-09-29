@@ -26,7 +26,7 @@ class RecommendDoctorCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
         padding: const EdgeInsets.all(defaultPadding),
         decoration: const BoxDecoration(
-          color: secondaryColor,
+          color: Colors.cyan,
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
         child: Row(

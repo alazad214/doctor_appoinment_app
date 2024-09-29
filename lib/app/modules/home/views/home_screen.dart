@@ -15,10 +15,7 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CustomAppBar(
-                text: "Hello Azad,",
-                title: "Find Specialist",
-              ),
+              CustomAppBar(),
 
               ///Suggest Doctor...
               SuggestDoctor(),

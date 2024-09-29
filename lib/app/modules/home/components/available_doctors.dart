@@ -1,3 +1,4 @@
+import 'package:doctor_appointment/app/modules/doctors/views/doctors_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../models/AvailableDoctor.dart';
@@ -20,7 +21,9 @@ class AvailableDoctors extends StatelessWidget {
               const EdgeInsets.only(top: 30, bottom: 5, right: 15, left: 15),
           child: SectionTitle(
             title: "Available Doctor",
-            pressOnSeeAll: () {},
+            pressOnSeeAll: () {
+              Get.to(() => const DoctorsScreen());
+            },
           ),
         ),
         SingleChildScrollView(
