@@ -58,7 +58,7 @@ class AppointmentScreen extends StatelessWidget {
                 child: ElevatedButton(
                     child: const Text("Confirm Appointment"),
                     onPressed: () {
-                      AppDialog(
+                      appDialog(
                           context,
                           const Icon(Icons.done),
                           'Appointment Now ',

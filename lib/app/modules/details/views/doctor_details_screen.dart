@@ -36,10 +36,10 @@ class DoctorDetailsScreen extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: defaultPadding),
                   child: ContactButton(callOntap: () {
-                    AppDialog(context, const Icon(Icons.phone), 'Call ',
+                    appDialog(context, const Icon(Icons.phone), 'Call ',
                         "Do you now call Azad", "Call Now", () {});
                   }, messageOntap: () {
-                    AppDialog(context, const Icon(Icons.phone), 'Message ',
+                    appDialog(context, const Icon(Icons.phone), 'Message ',
                         "Do you now send message Azad", "Message Now", () {});
                   })),
 

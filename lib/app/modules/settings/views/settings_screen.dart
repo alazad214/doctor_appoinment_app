@@ -1,3 +1,5 @@
+import 'package:doctor_appointment/app/logic/controller/auth%20controller/logout_controller.dart';
+import 'package:doctor_appointment/app/modules/auth/views/forget_password.dart';
 import 'package:doctor_appointment/app/modules/profile/views/edit_profile.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,7 +9,8 @@ import '../../../../utils/constants.dart';
 import '../components/setting_item_card.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+  SettingsScreen({super.key});
+  final controller = Get.put(LogoutController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class SettingsScreen extends StatelessWidget {
                   icon: Icons.password,
                   child: IconButton(
                       onPressed: () {
-                        Get.to(() => const EditProfile());
+                        Get.to(() => ForgetPassword());
                       },
                       icon: const Icon(Icons.arrow_circle_right_outlined))),
               SettingItemCard(
@@ -63,19 +66,21 @@ class SettingsScreen extends StatelessWidget {
                         Get.to(() => const EditProfile());
                       },
                       icon: const Icon(Icons.arrow_circle_right_outlined))),
+
+              ///Logout Card...
               SettingItemCard(
                   text: "Logout",
                   icon: Icons.logout,
                   child: IconButton(
                       onPressed: () {
-                        AppDialog(
+                        appDialog(
                             context,
                             const Icon(Icons.logout,
                                 size: 40, color: Colors.white),
                             'Logout Now',
                             "Are you sure you want to logout?",
                             "Logout", () {
-                          Navigator.of(context).pop();
+                          controller.signOut();
                         });
                       },
                       icon: const Icon(Icons.arrow_circle_right_outlined))),

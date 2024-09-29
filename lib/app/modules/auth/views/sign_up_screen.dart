@@ -1,3 +1,4 @@
+import 'package:doctor_appointment/app/logic/controller/auth%20controller/signup_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -5,12 +6,14 @@ import 'package:get/get.dart';
 import '../../../../utils/app_image.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/app_button.dart';
-import '../../main/main_screen.dart';
 import 'sign_in_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
   final _formKey = GlobalKey<FormState>();
+  final controller = Get.put(SignupController());
+
+  ///Code....
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -47,63 +50,67 @@ class SignUpScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        ///emial field...
                         TextFormField(
-                          validator:
-                              RequiredValidator(errorText: requiredField).call,
-                          onSaved: (newValue) {},
+                          validator: MultiValidator(
+                            [
+                              RequiredValidator(errorText: requiredField),
+                              EmailValidator(errorText: emailError),
+                            ],
+                          ).call,
+                          keyboardType: TextInputType.emailAddress,
+                          onChanged: (value) {
+                            controller.email.value = value;
+                          },
                           decoration:
-                              const InputDecoration(labelText: "Username*"),
+                              const InputDecoration(labelText: "Email*"),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: defaultPadding),
-                          child: TextFormField(
-                            validator: MultiValidator(
-                              [
-                                RequiredValidator(errorText: requiredField),
-                                EmailValidator(errorText: emailError),
-                              ],
-                            ).call,
-                            keyboardType: TextInputType.emailAddress,
-                            onSaved: (newValue) {},
-                            decoration:
-                                const InputDecoration(labelText: "Email*"),
-                          ),
-                        ),
+                        const SizedBox(height: 10),
+
+                        ///phone number field...
                         TextFormField(
                           onSaved: (newValue) {},
                           decoration:
                               const InputDecoration(labelText: "Phone Number"),
                           keyboardType: TextInputType.phone,
+                          validator:
+                              RequiredValidator(errorText: requiredField).call,
+                          onChanged: (value) {
+                            controller.phone.value = value;
+                          },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: defaultPadding),
-                          child: TextFormField(
-                            validator: passwordValidator.call,
-                            obscureText: true,
-                            onChanged: (value) => password = value,
-                            onSaved: (pass) {},
-                            decoration:
-                                const InputDecoration(labelText: "Password*"),
-                          ),
-                        ),
+                        const SizedBox(height: 10),
+
+                        ///password field...
                         TextFormField(
-                          validator: (val) => MatchValidator(
-                                  errorText: 'passwords do not match')
-                              .validateMatch(val!, password),
+                          validator: passwordValidator.call,
                           obscureText: true,
-                          onSaved: (newValue) {},
+                          onChanged: (value) {
+                            controller.password.value = value;
+                          },
+                          decoration:
+                              const InputDecoration(labelText: "Password*"),
+                        ),
+                        const SizedBox(height: 10),
+
+                        ///confirm password field...
+                        TextFormField(
+                          obscureText: true,
+                          onChanged: (value) {
+                            controller.confirmPassword.value = value;
+                          },
                           decoration: const InputDecoration(
                               labelText: "Confirm password*"),
                         ),
                         const SizedBox(height: 15),
+
+                        ///Signup button...
                         AppButton(
                             text: 'Sign Up',
                             ontap: () {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
-                                Get.to(() =>  MainScreen());
+                                controller.register();
                               }
                             })
                       ],
