@@ -21,12 +21,13 @@ class ProfileTextField extends StatelessWidget {
       this.onChanged,
       this.fieldName,
       this.maxLine,
-      this.controller, this.keyboardType});
+      this.controller,
+      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(bottom: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,7 +37,7 @@ class ProfileTextField extends StatelessWidget {
               fieldName ?? '',
               style: const TextStyle(
                   color: primaryColor,
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -51,7 +52,7 @@ class ProfileTextField extends StatelessWidget {
               suffixIcon: Icon(suffixIcon),
               labelStyle: TextStyle(color: Colors.grey[800]),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: Colors.white54,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6),
                 borderSide: const BorderSide(color: Colors.transparent),
@@ -63,7 +64,7 @@ class ProfileTextField extends StatelessWidget {
               ),
             ),
             style:
-                const TextStyle(color: textColor, fontWeight: FontWeight.w600),
+                const TextStyle(color: textColor, fontWeight: FontWeight.w500),
             onChanged: onChanged,
           )
         ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../utils/constants.dart';
 import '../../../../widgets/custom_app_bar.dart';
@@ -26,7 +27,10 @@ class CategoryScreen extends StatelessWidget {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                      return const Center(child: Text('No doctors found'));
+                      return Center(
+                        child: Lottie.asset('assets/animations/empty.json',
+                            fit: BoxFit.cover),
+                      );
                     } else {
                       return Padding(
                         padding: const EdgeInsets.all(defaultPadding),

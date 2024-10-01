@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
     const HomePage(),
     DoctorsScreen(),
     const MyAppointmentScreen(),
-    const ProfileScreen()
+    ProfileScreen()
   ];
 
   @override

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../widgets/custom_app_bar.dart';
 import '../components/available_doctors.dart';
 import '../../category/components/categories.dart';
-import '../components/suggest_doctor.dart';
+import '../components/banner.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
               CustomAppBar(),
 
               ///Suggest Doctor...
-              SuggestDoctor(),
+              BannerCard(),
 
               ///Category...
               Categories(),
