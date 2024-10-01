@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../models/dummySuggestData.dart';
 import '../../../../utils/constants.dart';
@@ -16,11 +17,7 @@ class RecommendDoctorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const DoctorDetailsScreen(),
-            ));
+
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),

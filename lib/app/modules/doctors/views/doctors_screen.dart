@@ -24,9 +24,7 @@ class DoctorsScreen extends StatelessWidget {
                   itemCount: demoAvailableDoctors.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () {
-                        Get.to(const DoctorDetailsScreen());
-                      },
+                      onTap: () {},
                       child: Container(
                         margin: const EdgeInsets.only(bottom: defaultPadding),
                         padding: const EdgeInsets.all(defaultPadding),

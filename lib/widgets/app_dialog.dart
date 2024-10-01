@@ -22,8 +22,8 @@ void appDialog(BuildContext context, Widget child, String title,
               Container(
                 width: 80,
                 height: 80,
-                decoration: const BoxDecoration(
-                    shape: BoxShape.circle, color: primaryColor),
+                decoration:  BoxDecoration(
+                    shape: BoxShape.circle, color: Colors.lightBlue.shade300),
                 child: child,
               ),
               const SizedBox(height: 15),
