@@ -4,7 +4,14 @@ import '../../../../utils/constants.dart';
 import '../../../logic/controller/appointment controller/appointment_controller.dart';
 
 class CalendarWidget extends StatelessWidget {
-  CalendarWidget({super.key});
+  final String doctorName;
+  final List<String> availableDays;
+
+  CalendarWidget({
+    super.key,
+    required this.doctorName,
+    required this.availableDays,
+  });
 
   final controller = Get.put(AppointmentController());
 
@@ -14,39 +21,54 @@ class CalendarWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 30),
-        Text("Select Days", style: Theme.of(context).textTheme.titleMedium),
+        const Text("Select Days ",
+            style: TextStyle(
+                color: textColor, fontSize: 14, fontWeight: FontWeight.bold)),
         const SizedBox(height: 10),
         SizedBox(
-          height: 80,
+          height: 40,
           child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(width: defaultPadding);
+              return const SizedBox(width: 10);
             },
-            itemCount: controller.listOfDays.length,
+            itemCount: availableDays.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (BuildContext context, int index) {
               return InkWell(
                 onTap: () {
-                  controller.selectDay(controller.listOfDays[index]);
+                  controller.selectDay(availableDays[index]);
                 },
                 child: Obx(() => Container(
-                      width: 60,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: controller.selectedDay.value ==
-                                  controller.listOfDays[index]
-                              ? primaryColor
-                              : Colors.white54),
+                        borderRadius: BorderRadius.circular(8),
+                        color:
+                            controller.selectedDay.value == availableDays[index]
+                                ? Colors.blue
+                                : Colors.white,
+                        border: Border.all(
+                          color: Colors.blue.withOpacity(0.5),
+                          width: 0.5,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
                       child: Text(
-                        controller.listOfDays[index],
+                        availableDays[index],
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: controller.selectedDay.value ==
-                                  controller.listOfDays[index]
+                                  availableDays[index]
                               ? Colors.white
-                              : textColor,
+                              : Colors.black,
                         ),
                       ),
                     )),

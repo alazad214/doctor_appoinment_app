@@ -1,5 +1,4 @@
 import 'package:doctor_appointment/app/logic/controller/auth%20controller/forget_controller.dart';
-import 'package:doctor_appointment/app/modules/auth/views/sign_in_screen.dart';
 import 'package:doctor_appointment/utils/app_image.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
 import 'package:flutter/material.dart';
@@ -57,14 +56,15 @@ class ForgetPassword extends StatelessWidget {
                           ontap: () {
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
-                              controller.forgetPassword();
+
                               appDialog(
                                   context,
                                   const Icon(Icons.password),
                                   "Forget Password",
                                   'A link has been sent to your email. Click there to change your password',
-                                  "Login Screen ⇨", () {
-                                Get.offAll(() => SignInScreen());
+                                  "Confirm", () {
+                                controller.forgetPassword();
+                                Navigator.pop(context);
                               });
                             }
                           })

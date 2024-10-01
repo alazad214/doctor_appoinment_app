@@ -1,6 +1,5 @@
 import 'package:doctor_appointment/app/logic/model/doctor_model.dart';
 import 'package:doctor_appointment/widgets/app_rating.dart';
-import 'package:doctor_appointment/widgets/rating.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../utils/constants.dart';
@@ -51,7 +50,6 @@ class AvailableDoctors extends StatelessWidget {
                         child: GestureDetector(
                           onTap: () {
                             Get.to(() => DoctorDetailsScreen(doctor: doctor));
-
                           },
                           child: Container(
                             padding: const EdgeInsets.all(defaultPadding),
@@ -76,33 +74,31 @@ class AvailableDoctors extends StatelessWidget {
                                           style: const TextStyle(
                                               color: textColor,
                                               fontSize: 14,
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.w500)),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: defaultPadding / 2),
                                         child: AppRating(
-                                          score: doctor.rating
-                                              .toDouble(), // num কে double এ কনভার্ট করে পাঠান
+                                          score: doctor.rating.toDouble(),
                                         ),
                                       ),
                                       const SizedBox(
-                                          height: defaultPadding / 2),
+                                          height: 5),
                                       const Text("Experience",
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 1,
                                           style: TextStyle(
                                               color: textColor,
-                                              fontSize: 18,
+                                              fontSize: 16,
                                               fontWeight: FontWeight.bold)),
                                       Text("${doctor.experience} years",
                                           style: const TextStyle(
                                               color: textColor,
                                               fontSize: 14,
-                                              fontWeight: FontWeight.bold)),
+                                              fontWeight: FontWeight.w500)),
                                     ],
                                   ),
                                 ),
-
                                 Container(
                                   clipBehavior: Clip.antiAlias,
                                   decoration: BoxDecoration(
