@@ -2,7 +2,7 @@ import 'package:doctor_appointment/app/modules/article/views/article_card.dart';
 import 'package:flutter/material.dart';
 import '../../../../widgets/custom_app_bar.dart';
 import '../components/available_doctors.dart';
-import '../components/categories.dart';
+import '../../category/components/categories.dart';
 import '../components/suggest_doctor.dart';
 
 class HomePage extends StatelessWidget {

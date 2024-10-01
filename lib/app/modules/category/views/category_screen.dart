@@ -1,13 +1,15 @@
-import 'package:doctor_appointment/app/modules/details/views/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../../utils/constants.dart';
 import '../../../../widgets/custom_app_bar.dart';
 import '../../../logic/model/doctor_model.dart';
 import '../../../logic/service/doctor_service.dart';
+import '../../details/views/doctor_details_screen.dart';
 
-class DoctorsScreen extends StatelessWidget {
-  DoctorsScreen({super.key});
+class CategoryScreen extends StatelessWidget {
+  final String category;
+  CategoryScreen({super.key, required this.category});
   final firestoreService = FirestoreService();
 
   @override
@@ -19,12 +21,10 @@ class DoctorsScreen extends StatelessWidget {
             children: [
               const CustomAppBar(),
               FutureBuilder(
-                  future: firestoreService.getDoctors(),
+                  future: firestoreService.getDoctorsByCategory(category),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Center(child: Text('Error: ${snapshot.error}'));
                     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
                       return const Center(child: Text('No doctors found'));
                     } else {
@@ -67,7 +67,6 @@ class DoctorsScreen extends StatelessWidget {
                                           fit: BoxFit.cover),
                                     ),
                                     const SizedBox(width: 15),
-
                                     Expanded(
                                       child: Column(
                                         crossAxisAlignment:
@@ -98,7 +97,7 @@ class DoctorsScreen extends StatelessWidget {
                                                         TextOverflow.ellipsis,
                                                     maxLines: 2,
                                                     TextSpan(
-                                                      text: "Experience",
+                                                      text: "Experience: ",
                                                       style: const TextStyle(
                                                           fontSize: 12,
                                                           color: textColor,
@@ -107,7 +106,7 @@ class DoctorsScreen extends StatelessWidget {
                                                       children: [
                                                         TextSpan(
                                                           text:
-                                                              "${doctor.experience}",
+                                                              "${doctor.experience} years",
                                                           style:
                                                               const TextStyle(
                                                                   fontSize: 10,
@@ -159,7 +158,7 @@ class DoctorsScreen extends StatelessWidget {
                         ),
                       );
                     }
-                  })
+                  }),
             ],
           ),
         ),

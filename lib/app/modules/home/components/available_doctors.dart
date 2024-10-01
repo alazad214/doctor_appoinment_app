@@ -24,7 +24,7 @@ class AvailableDoctors extends StatelessWidget {
           child: SectionTitle(
             title: "Available Doctor",
             pressOnSeeAll: () {
-              Get.to(() => const DoctorsScreen());
+              Get.to(() => DoctorsScreen());
             },
           ),
         ),
@@ -82,8 +82,7 @@ class AvailableDoctors extends StatelessWidget {
                                           score: doctor.rating.toDouble(),
                                         ),
                                       ),
-                                      const SizedBox(
-                                          height: 5),
+                                      const SizedBox(height: 5),
                                       const Text("Experience",
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 1,
