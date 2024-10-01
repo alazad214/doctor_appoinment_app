@@ -73,16 +73,6 @@ class AvailableDoctors extends StatelessWidget {
                                   style:
                                       Theme.of(context).textTheme.titleMedium,
                                 ),
-                                const SizedBox(height: defaultPadding / 2),
-                                Text(
-                                  "Patients",
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                                Text(
-                                  dummyAvailableDoctor[index]['patients'],
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
                               ],
                             ),
                             Image.asset(

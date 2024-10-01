@@ -1,6 +1,7 @@
 import 'package:doctor_appointment/app/logic/controller/auth%20controller/logout_controller.dart';
 import 'package:doctor_appointment/app/modules/auth/views/forget_password.dart';
 import 'package:doctor_appointment/app/modules/profile/views/edit_profile.dart';
+import 'package:doctor_appointment/app/modules/settings/views/privacy_policy_screen.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,7 @@ class SettingsScreen extends StatelessWidget {
                   icon: Icons.privacy_tip_outlined,
                   child: IconButton(
                       onPressed: () {
-                        Get.to(() => const EditProfile());
+                        Get.to(() => const PolicyScreen());
                       },
                       icon: const Icon(Icons.arrow_circle_right_outlined))),
 
