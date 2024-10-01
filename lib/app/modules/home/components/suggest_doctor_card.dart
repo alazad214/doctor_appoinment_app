@@ -16,9 +16,7 @@ class RecommendDoctorCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-
-      },
+      onTap: () {},
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
         padding: const EdgeInsets.all(defaultPadding),
