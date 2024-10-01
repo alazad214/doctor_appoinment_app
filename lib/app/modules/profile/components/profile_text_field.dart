@@ -10,6 +10,8 @@ class ProfileTextField extends StatelessWidget {
   final onChanged;
   final fieldName;
   final maxLine;
+  final controller;
+  final keyboardType;
   const ProfileTextField(
       {super.key,
       this.initialValue,
@@ -17,7 +19,9 @@ class ProfileTextField extends StatelessWidget {
       this.hintText,
       this.suffixIcon,
       this.onChanged,
-      this.fieldName, this.maxLine});
+      this.fieldName,
+      this.maxLine,
+      this.controller, this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +41,10 @@ class ProfileTextField extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 3),
-          TextField(
-            maxLines: maxLine??1,
-            controller: TextEditingController(text: initialValue),
+          TextFormField(
+            maxLines: maxLine ?? 1,
+            keyboardType: keyboardType,
+            controller: controller ?? TextEditingController(text: initialValue),
             readOnly: readOnly ?? false,
             decoration: InputDecoration(
               hintText: hintText,
