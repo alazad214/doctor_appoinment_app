@@ -72,7 +72,7 @@ class ArticleDetails extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const AvailableDoctors(),
+             AvailableDoctors(),
           ],
         ),
       ),

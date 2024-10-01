@@ -45,14 +45,7 @@ class SearchResultScreen extends StatelessWidget {
                     ...List.generate(
                       demo_search_doctors.length,
                       (index) => SearchDoctorCard(
-                        info: demo_search_doctors[index],
-                        press: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DoctorDetailsScreen(),
-                          ),
-                        ),
-                      ),
+                          info: demo_search_doctors[index], press: () {}),
                     ),
                   ],
                 ),
