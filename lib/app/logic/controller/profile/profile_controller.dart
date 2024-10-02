@@ -35,8 +35,7 @@ class ProfileController extends GetxController {
         username.value = userData['userName'] ?? '';
         email.value = userData['email'] ?? '';
         userImage.value = userData['photos'] ?? '';
-        phoneNumber.value = userData['phone'] ??
-            'https://firebasestorage.googleapis.com/v0/b/arroggo-talk.appspot.com/o/profile.png?alt=media&token=800857a1-ac53-4d13-b427-efb5dfdb6c92';
+        phoneNumber.value = userData['phone'] ?? '';
         address.value = userData['address'] ?? '';
       }
     }

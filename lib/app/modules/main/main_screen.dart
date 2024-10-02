@@ -15,7 +15,7 @@ class MainScreen extends StatelessWidget {
   final List pages = [
     const HomePage(),
     DoctorsScreen(),
-    const MyAppointmentScreen(),
+    MyAppointmentScreen(),
     ProfileScreen()
   ];
 
