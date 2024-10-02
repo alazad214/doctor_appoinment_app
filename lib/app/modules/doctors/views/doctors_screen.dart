@@ -98,7 +98,7 @@ class DoctorsScreen extends StatelessWidget {
                                                         TextOverflow.ellipsis,
                                                     maxLines: 2,
                                                     TextSpan(
-                                                      text: "Experience",
+                                                      text: "Experience: ",
                                                       style: const TextStyle(
                                                           fontSize: 12,
                                                           color: textColor,

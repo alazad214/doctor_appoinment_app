@@ -68,8 +68,8 @@ class AvailableDoctors extends StatelessWidget {
                                       Text(doctor.name,
                                           style: const TextStyle(
                                               color: textColor,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold)),
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500)),
                                       Text(doctor.category,
                                           style: const TextStyle(
                                               color: textColor,
@@ -88,8 +88,8 @@ class AvailableDoctors extends StatelessWidget {
                                           maxLines: 1,
                                           style: TextStyle(
                                               color: textColor,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold)),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500)),
                                       Text("${doctor.experience} years",
                                           style: const TextStyle(
                                               color: textColor,

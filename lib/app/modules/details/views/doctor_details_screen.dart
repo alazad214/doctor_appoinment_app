@@ -40,7 +40,8 @@ class DoctorDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           doctor.name,
-          style: const TextStyle(color: textColor, fontWeight: FontWeight.w500, fontSize: 18),
+          style: const TextStyle(
+              color: textColor, fontWeight: FontWeight.w500, fontSize: 18),
         ),
       ),
       body: SafeArea(
@@ -145,7 +146,8 @@ class DoctorDetailsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => AppointmentScreen(doctor: doctor)), // Pass doctor data
+                  onPressed: () => Get.to(() =>
+                      AppointmentScreen(doctor: doctor)), // Pass doctor data
                   child: const Text("Book an Appointment"),
                 ),
               ),

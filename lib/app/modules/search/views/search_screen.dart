@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../utils/constants.dart';
@@ -11,7 +10,11 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Search Here"),
+        title: const Text(
+          "Search Here",
+          style: TextStyle(
+              color: textColor, fontWeight: FontWeight.w500, fontSize: 16),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -23,8 +26,8 @@ class SearchScreen extends StatelessWidget {
                 "Search Your",
                 style: Theme.of(context)
                     .textTheme
-                    .titleLarge!
-                    .copyWith(fontWeight: FontWeight.normal),
+                    .titleMedium!
+                    .copyWith(fontWeight: FontWeight.w500),
               ),
               Text(
                 "Specialist",
@@ -33,7 +36,7 @@ class SearchScreen extends StatelessWidget {
                     .titleLarge!
                     .copyWith(fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: defaultPadding),
+              const SizedBox(height: defaultPadding),
               SearchForm(),
             ],
           ),

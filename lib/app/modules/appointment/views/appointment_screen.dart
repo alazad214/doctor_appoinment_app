@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_appointment/app/logic/controller/appointment%20controller/appointment_controller.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
+import 'package:doctor_appointment/widgets/successfull_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../style/toast_style.dart';
@@ -89,8 +90,9 @@ class AppointmentScreen extends StatelessWidget {
                         Image.asset('assets/icons/success.png', height: 40),
                         "Appointment Cofirm",
                         "Your appointment has been confirmed. You will be contacted very soon.",
-                        "Confirm", () {
-                      Navigator.pop(context);
+                        "Confirm", () async {
+                      Get.offAll(() => const SuccessfullScreen());
+
                       controller.saveAppointment(doctor.name);
                     });
                   } else {
