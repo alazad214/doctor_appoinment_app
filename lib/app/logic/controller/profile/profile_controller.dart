@@ -10,6 +10,7 @@ class ProfileController extends GetxController {
   RxString userImage = ''.obs;
   RxString phoneNumber = ''.obs;
   RxString address = ''.obs;
+  RxString blodGroup = ''.obs;
 
   final auth = FirebaseAuth.instance;
   final currentUser = FirebaseAuth.instance.currentUser;
@@ -32,12 +33,12 @@ class ProfileController extends GetxController {
 
       if (querySnapshot.docs.isNotEmpty) {
         var userData = querySnapshot.docs[0].data() as Map<String, dynamic>;
-        username.value = userData['userName'] ?? '';
-        email.value = userData['email'] ?? '';
-        userImage.value = userData['photos'] ?? '';
-        phoneNumber.value = userData['phone'] ??
-            'https://firebasestorage.googleapis.com/v0/b/arroggo-talk.appspot.com/o/profile.png?alt=media&token=800857a1-ac53-4d13-b427-efb5dfdb6c92';
-        address.value = userData['address'] ?? '';
+        username.value = userData['userName'];
+        email.value = userData['email'];
+        userImage.value = userData['photos'];
+        phoneNumber.value = userData['phone'];
+        address.value = userData['address'];
+        address.value = userData['bloodGroup'];
       }
     }
   }

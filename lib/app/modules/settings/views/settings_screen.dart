@@ -1,5 +1,6 @@
 import 'package:doctor_appointment/app/logic/controller/auth%20controller/logout_controller.dart';
 import 'package:doctor_appointment/app/modules/profile/views/edit_profile.dart';
+import 'package:doctor_appointment/app/modules/settings/views/password_change.dart';
 import 'package:doctor_appointment/app/modules/settings/views/privacy_policy_screen.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
 import 'package:doctor_appointment/widgets/custom_button.dart';
@@ -44,7 +45,7 @@ class SettingsScreen extends StatelessWidget {
                 text: "Password Change",
                 icon: Icons.password,
                 onChanged: () {
-                  Get.to(() => const EditProfile());
+                  Get.to(() => PasswordChange());
                 },
               ),
               SettingItemCard(

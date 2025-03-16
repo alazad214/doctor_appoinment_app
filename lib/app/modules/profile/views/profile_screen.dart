@@ -2,6 +2,7 @@ import 'package:doctor_appointment/app/logic/controller/profile/profile_controll
 import 'package:doctor_appointment/app/modules/profile/components/profile_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants.dart';
 import '../../settings/views/settings_screen.dart';
 
@@ -18,11 +19,12 @@ class ProfileScreen extends StatelessWidget {
           style: TextStyle(color: textColor, fontWeight: FontWeight.w500),
         ),
         automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
         actions: [
           IconButton(
             onPressed: () => Get.to(() => SettingsScreen()),
             icon: const Icon(
-              Icons.settings,
+              Iconsax.setting,
               color: primaryColor,
             ),
           ),
@@ -34,31 +36,44 @@ class ProfileScreen extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 60,
-              backgroundImage: NetworkImage(
-                controller.userImage.value,
-              ),
+              backgroundImage: controller.userImage.value != ''
+                  ? NetworkImage(
+                      controller.userImage.value,
+                    )
+                  : AssetImage('assets/images/avatar.jpg'),
             ),
             const SizedBox(height: defaultPadding),
             ProfileTextField(
                 initialValue: controller.username.value,
                 fieldName: 'User Name*',
-                suffixIcon: Icons.person_outline,
+                suffixIcon: Iconsax.user,
                 readOnly: true),
             ProfileTextField(
                 initialValue: controller.email.value,
                 fieldName: 'Email*',
-                suffixIcon: Icons.mail_outline,
+                suffixIcon: Icons.email_outlined,
                 readOnly: true),
-            ProfileTextField(
-                initialValue: controller.phoneNumber.value,
-                fieldName: 'Mobile*',
-                suffixIcon: Icons.phone,
-                readOnly: true),
-            ProfileTextField(
-                initialValue: controller.address.value,
-                fieldName: 'Address*',
-                suffixIcon: Icons.location_on_outlined,
-                readOnly: true),
+            controller.phoneNumber.value != ''
+                ? ProfileTextField(
+                    initialValue: controller.phoneNumber.value,
+                    fieldName: 'Mobile*',
+                    suffixIcon: Iconsax.call,
+                    readOnly: true)
+                : SizedBox.shrink(),
+            controller.address.value != ''
+                ? ProfileTextField(
+                    initialValue: controller.address.value,
+                    fieldName: 'Address*',
+                    suffixIcon: Iconsax.location,
+                    readOnly: true)
+                : SizedBox.shrink(),
+            controller.blodGroup.value != ''
+                ? ProfileTextField(
+                    initialValue: controller.blodGroup.value,
+                    fieldName: 'Blood Group*',
+                    suffixIcon: Icons.bloodtype_outlined,
+                    readOnly: true)
+                : SizedBox.shrink(),
           ],
         ),
       ),
