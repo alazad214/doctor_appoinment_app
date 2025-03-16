@@ -51,6 +51,8 @@ dependencies:
   url_launcher: ^6.0.20
   fluttertoast: ^8.2.12
   iconsax: ^0.0.8
+  image_picker: ^1.1.2
+  file_picker: ^9.1.0
 
 dev_dependencies:
   flutter_test:

@@ -17,7 +17,7 @@ class MainScreen extends StatelessWidget {
   final List pages = [
     const HomePage(),
     DoctorsScreen(),
-    const MyAppointmentScreen(),
+    MyAppointmentScreen(),
     ProfileScreen()
   ];
 
@@ -44,7 +44,7 @@ class MainScreen extends StatelessWidget {
                     tabs: const [
                       GButton(icon: Iconsax.home, text: 'Home'),
                       GButton(icon: Iconsax.people, text: 'Doctors'),
-                      GButton(icon: Icons.content_paste, text: 'Appointment'),
+                      GButton(icon: Iconsax.calendar, text: 'Appointment'),
                       GButton(icon: Iconsax.user, text: 'Profile')
                     ],
                     onTabChange: (index) {

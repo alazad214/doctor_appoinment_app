@@ -38,7 +38,7 @@ class SettingsScreen extends StatelessWidget {
                 text: "Profile Update",
                 icon: Icons.edit,
                 onChanged: () {
-                  Get.to(() => const EditProfile());
+                  Get.to(() =>  EditProfile());
                 },
               ),
               SettingItemCard(

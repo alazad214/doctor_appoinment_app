@@ -22,7 +22,7 @@ class PasswordChange extends StatelessWidget {
     emailController.text = currentUser!.email!;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Forget Password'),
+        title: Text('Password Password'),
         backgroundColor: Colors.transparent,
       ),
       body: SafeArea(
@@ -65,7 +65,7 @@ class PasswordChange extends StatelessWidget {
                                   appDialog(
                                       context,
                                       const Icon(Icons.password),
-                                      "Forget Password",
+                                      "Password Change",
                                       'A link has been sent to your email. Click there to change your password',
                                       "Send", () {
                                     controller

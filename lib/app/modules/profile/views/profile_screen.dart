@@ -1,10 +1,11 @@
 import 'package:doctor_appointment/app/logic/controller/profile/profile_controller.dart';
 import 'package:doctor_appointment/app/modules/profile/components/profile_text_field.dart';
+import 'package:doctor_appointment/app/modules/profile/views/edit_profile.dart'
+    show EditProfile;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../utils/constants.dart';
-import '../../settings/views/settings_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -15,16 +16,21 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Profile",
-          style: TextStyle(color: textColor, fontWeight: FontWeight.w500),
+          "My Info",
+          style: TextStyle(
+            color: textColor,
+            fontWeight: FontWeight.w500,
+            fontSize: 20,
+          ),
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-            onPressed: () => Get.to(() => SettingsScreen()),
+            onPressed: () => Get.to(() => EditProfile()),
             icon: const Icon(
-              Iconsax.setting,
+              Iconsax.edit,
+              size: 20,
               color: primaryColor,
             ),
           ),
@@ -45,13 +51,13 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: defaultPadding),
             ProfileTextField(
                 initialValue: controller.username.value,
-                fieldName: 'User Name*',
+                fieldName: 'Name*',
                 suffixIcon: Iconsax.user,
                 readOnly: true),
             ProfileTextField(
                 initialValue: controller.email.value,
                 fieldName: 'Email*',
-                suffixIcon: Icons.email_outlined,
+                suffixIcon: Iconsax.sms,
                 readOnly: true),
             controller.phoneNumber.value != ''
                 ? ProfileTextField(
@@ -67,9 +73,9 @@ class ProfileScreen extends StatelessWidget {
                     suffixIcon: Iconsax.location,
                     readOnly: true)
                 : SizedBox.shrink(),
-            controller.blodGroup.value != ''
+            controller.bloodGroup.value != ''
                 ? ProfileTextField(
-                    initialValue: controller.blodGroup.value,
+                    initialValue: controller.bloodGroup.value,
                     fieldName: 'Blood Group*',
                     suffixIcon: Icons.bloodtype_outlined,
                     readOnly: true)
