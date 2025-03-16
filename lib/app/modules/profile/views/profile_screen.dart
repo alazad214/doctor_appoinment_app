@@ -16,7 +16,8 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Profile",
-          style: TextStyle(color: textColor, fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: textColor, fontWeight: FontWeight.w500, fontSize: 16),
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -34,6 +35,24 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
+
+            Container(
+              clipBehavior: Clip.antiAlias,
+              height: 120,
+              width: 120,
+              decoration: const BoxDecoration(
+                  color: Colors.blue, shape: BoxShape.circle),
+              child: Image.network(
+                controller.userImage.value,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/images/profile.png',
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+
             CircleAvatar(
               radius: 60,
               backgroundImage: controller.userImage.value != ''
@@ -41,6 +60,7 @@ class ProfileScreen extends StatelessWidget {
                       controller.userImage.value,
                     )
                   : AssetImage('assets/images/avatar.jpg'),
+
             ),
             const SizedBox(height: defaultPadding),
             ProfileTextField(

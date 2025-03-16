@@ -33,12 +33,14 @@ class ProfileController extends GetxController {
 
       if (querySnapshot.docs.isNotEmpty) {
         var userData = querySnapshot.docs[0].data() as Map<String, dynamic>;
+
         username.value = userData['userName'];
         email.value = userData['email'];
         userImage.value = userData['photos'];
         phoneNumber.value = userData['phone'];
         address.value = userData['address'];
         address.value = userData['bloodGroup'];
+
       }
     }
   }
