@@ -1,12 +1,13 @@
 import 'package:doctor_appointment/app/logic/controller/auth%20controller/forget_controller.dart';
 import 'package:doctor_appointment/utils/app_image.dart';
+import 'package:doctor_appointment/utils/constants.dart' as AppColors;
 import 'package:doctor_appointment/widgets/app_dialog.dart';
+import 'package:doctor_appointment/widgets/custom_button.dart';
+import 'package:doctor_appointment/widgets/custom_textfield.dart';
+import 'package:doctor_appointment/widgets/custom_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import '../../../../utils/constants.dart';
-import '../../../../widgets/app_button.dart';
 
 class ForgetPassword extends StatelessWidget {
   ForgetPassword({super.key});
@@ -26,7 +27,7 @@ class ForgetPassword extends StatelessWidget {
             ),
             Center(
               child: SingleChildScrollView(
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(20),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -36,38 +37,42 @@ class ForgetPassword extends StatelessWidget {
                           width: screenSize.width / 2.5),
                       const SizedBox(height: 40),
 
-                      ///email field...
-                      TextFormField(
-                          validator: MultiValidator(
-                            [
-                              RequiredValidator(errorText: requiredField),
-                              EmailValidator(errorText: emailError)
-                            ],
-                          ).call,
-                          keyboardType: TextInputType.emailAddress,
-                          onChanged: (value) {
-                            controller.email.value = value;
-                          },
-                          decoration:
-                              const InputDecoration(labelText: "Email*")),
-                      const SizedBox(height: 30),
-                      AppButton(
-                          text: 'Send Link',
-                          ontap: () {
-                            if (_formKey.currentState!.validate()) {
-                              _formKey.currentState!.save();
+                      //Email field-->
 
-                              appDialog(
-                                  context,
-                                  const Icon(Icons.password),
-                                  "Forget Password",
-                                  'A link has been sent to your email. Click there to change your password',
-                                  "Confirm", () {
-                                controller.forgetPassword();
-                                Navigator.pop(context);
-                              });
-                            }
-                          })
+                      CustomTextfield(
+                        hintText: 'Enter your email',
+                        inputType: TextInputType.emailAddress,
+                        onChanged: (value) {
+                          controller.email.value = value;
+                        },
+                        validator: InputValidator.validateEmail,
+                      ),
+                      const SizedBox(height: 30),
+
+                      Obx(() {
+                        return controller.isLoading.value
+                            ? CircularProgressIndicator(
+                                color: AppColors.primaryColor,
+                              )
+                            : customButton(
+                                name: 'Send Forget Link',
+                                onCallBack: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _formKey.currentState!.save();
+
+                                    appDialog(
+                                        context,
+                                        const Icon(Icons.password),
+                                        "Forget Password",
+                                        'A link has been sent to your email. Click there to change your password',
+                                        "Send", () {
+                                      controller.forgetPassword();
+                                      Navigator.pop(context);
+                                    });
+                                  }
+                                },
+                                context: context);
+                      }),
                     ],
                   ),
                 ),

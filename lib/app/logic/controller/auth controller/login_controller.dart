@@ -7,6 +7,11 @@ import '../../../../style/toast_style.dart';
 class LoginController extends GetxController {
   var email = ''.obs;
   var password = ''.obs;
+  RxBool isLoading = false.obs;
+  var isSecure = true.obs;
+  isPassSecureFunc() {
+    isSecure.value = !isSecure.value;
+  }
 
   ///Instance...
   final auth = FirebaseAuth.instance;
@@ -14,17 +19,20 @@ class LoginController extends GetxController {
 
   logIn() async {
     try {
+      isLoading.value = true;
       await auth
           .signInWithEmailAndPassword(
               email: email.value, password: password.value)
           .then((value) {
         if (value.user != null) {
+          isLoading.value = false;
           Get.offAll(MainScreen());
           successToast('Successfully Login');
         }
       });
     } on FirebaseAuthException catch (error) {
-      errorToast(error);
+      isLoading.value = false;
+      errorToast(error.message ?? 'An error occurred');
     }
   }
 }

@@ -9,6 +9,12 @@ class SignupController extends GetxController {
   var phone = ''.obs;
   var password = ''.obs;
   var confirmPassword = ''.obs;
+  RxBool isLoading = false.obs;
+  var isSecure = true.obs;
+
+  isPassSecureFunc() {
+    isSecure.value = !isSecure.value;
+  }
 
   ///Instance...
   final auth = FirebaseAuth.instance;
@@ -16,6 +22,7 @@ class SignupController extends GetxController {
 
   register() async {
     try {
+      isLoading.value = true;
       await auth
           .createUserWithEmailAndPassword(
               email: email.value, password: password.value)
@@ -23,6 +30,7 @@ class SignupController extends GetxController {
         if (value.user != null) {
           Get.offAll(MainScreen());
           successToast('Successfully Signup');
+          isLoading.value = false;
         }
       });
 
@@ -41,6 +49,7 @@ class SignupController extends GetxController {
       ///Auth Exception...
     } on FirebaseAuthException catch (error) {
       errorToast(error);
+      isLoading.value = false;
     }
   }
 }

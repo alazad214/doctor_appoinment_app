@@ -6,7 +6,6 @@ class Shimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final w = MediaQuery.of(context).size.width;
     return Container(
       width: double.infinity,
       height: double.infinity,

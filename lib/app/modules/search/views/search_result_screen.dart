@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../models/SearchDoctor.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/section_title.dart';
-import '../../details/views/doctor_details_screen.dart';
 import '../../home/components/available_doctors.dart';
 import '../components/search_doctor_card.dart';
 

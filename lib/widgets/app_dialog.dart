@@ -1,7 +1,5 @@
-import 'package:doctor_appointment/utils/constants.dart';
+import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
-
-import 'app_button.dart';
 
 void appDialog(BuildContext context, Widget child, String title,
     String subtitle, String buttonText, VoidCallback ontap) {
@@ -15,37 +13,37 @@ void appDialog(BuildContext context, Widget child, String title,
           padding: const EdgeInsets.all(20),
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              color: Colors.white, borderRadius: BorderRadius.circular(6)),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: 80,
                 height: 80,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                     shape: BoxShape.circle, color: Colors.lightBlue.shade300),
                 child: child,
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 10),
               Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 22,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: AppColors.primaryColor,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 5),
               Text(
                 subtitle,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey[700],
+                  color: Colors.black54,
                   height: 1.5,
                 ),
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -62,10 +60,11 @@ void appDialog(BuildContext context, Widget child, String title,
                   InkWell(
                     onTap: ontap,
                     child: Container(
-                      padding: const EdgeInsets.all(10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 5),
                       decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(10)),
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(6)),
                       child: Text(
                         buttonText,
                         style: const TextStyle(

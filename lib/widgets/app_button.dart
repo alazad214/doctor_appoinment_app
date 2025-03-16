@@ -1,3 +1,4 @@
+import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends StatelessWidget {
@@ -12,7 +13,11 @@ class AppButton extends StatelessWidget {
       style: TextButton.styleFrom(
         backgroundColor: const Color(0xFF6C9ED8),
       ),
-      child: Text(text ?? ''),
+      child: Text(
+        text ?? '',
+        style: TextStyle(
+            color: AppColors.white, fontSize: 18, fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

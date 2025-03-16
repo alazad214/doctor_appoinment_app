@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../../../models/dummySuggestData.dart';
 import '../../../../utils/constants.dart';
-import '../../details/views/doctor_details_screen.dart';
 
 class RecommendDoctorCard extends StatelessWidget {
   const RecommendDoctorCard({
