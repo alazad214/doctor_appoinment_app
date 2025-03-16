@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Doctor App',
+      title: 'Aroggo Talk',
       theme: AppTheme.light(context),
       home: currentUser == null ? const SplashScreen() : MainScreen(),
     );

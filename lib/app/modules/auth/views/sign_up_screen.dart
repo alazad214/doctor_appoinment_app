@@ -1,11 +1,13 @@
 import 'package:doctor_appointment/app/logic/controller/auth%20controller/signup_controller.dart';
+import 'package:doctor_appointment/style/toast_style.dart';
+import 'package:doctor_appointment/widgets/app_colors.dart';
+import 'package:doctor_appointment/widgets/custom_button.dart';
+import 'package:doctor_appointment/widgets/custom_textfield.dart';
+import 'package:doctor_appointment/widgets/custom_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import '../../../../utils/app_image.dart';
-import '../../../../utils/constants.dart';
-import '../../../../widgets/app_button.dart';
 import 'sign_in_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -17,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    String password = "";
+
     return Scaffold(
       body: SafeArea(
           child: Stack(
@@ -29,7 +31,7 @@ class SignUpScreen extends StatelessWidget {
           ),
           Center(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -37,10 +39,22 @@ class SignUpScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text("Already have an account?"),
+                      const Text(
+                        "Already have an account?",
+                        style: TextStyle(
+                            color: AppColors.c002D62,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
                       TextButton(
                         onPressed: () => Get.to(() => SignInScreen()),
-                        child: const Text("Sign In!"),
+                        child: const Text(
+                          "Sign In!",
+                          style: TextStyle(
+                              color: AppColors.boxShadow,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
                       )
                     ],
                   ),
@@ -48,71 +62,94 @@ class SignUpScreen extends StatelessWidget {
                   Form(
                     key: _formKey,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ///emial field...
-                        TextFormField(
-                          validator: MultiValidator(
-                            [
-                              RequiredValidator(errorText: requiredField),
-                              EmailValidator(errorText: emailError),
-                            ],
-                          ).call,
-                          keyboardType: TextInputType.emailAddress,
+                        //Email field-->
+                        CustomTextfield(
+                          hintText: 'Email',
+                          inputType: TextInputType.emailAddress,
                           onChanged: (value) {
                             controller.email.value = value;
                           },
-                          decoration:
-                              const InputDecoration(labelText: "Email*"),
+                          validator: InputValidator.validateEmail,
                         ),
                         const SizedBox(height: 10),
 
-                        ///phone number field...
-                        TextFormField(
-                          onSaved: (newValue) {},
-                          decoration:
-                              const InputDecoration(labelText: "Phone Number"),
-                          keyboardType: TextInputType.phone,
-                          validator:
-                              RequiredValidator(errorText: requiredField).call,
+                        //Number field-->
+                        CustomTextfield(
+                          hintText: 'Phone Number',
+                          inputType: TextInputType.phone,
                           onChanged: (value) {
                             controller.phone.value = value;
                           },
+                          validator: InputValidator.validatenumber,
                         ),
+
                         const SizedBox(height: 10),
 
-                        ///password field...
-                        TextFormField(
-                          validator: passwordValidator.call,
-                          obscureText: true,
-                          onChanged: (value) {
-                            controller.password.value = value;
-                          },
-                          decoration:
-                              const InputDecoration(labelText: "Password*"),
-                        ),
+                        //password field-->
+
+                        Obx(() {
+                          return CustomTextfield(
+                            hintText: 'Password',
+                            inputType: TextInputType.visiblePassword,
+                            onChanged: (value) {
+                              controller.password.value = value;
+                            },
+                            validator: InputValidator.validatePassword,
+                            suffixIcon: IconButton(
+                                onPressed: controller.isPassSecureFunc,
+                                icon: Icon(controller.isSecure == true
+                                    ? Icons.visibility_off
+                                    : Icons.visibility)),
+                            isObsecure: controller.isSecure.value,
+                          );
+                        }),
+
                         const SizedBox(height: 10),
 
-                        ///confirm password field...
-                        TextFormField(
-                          obscureText: true,
-                          onChanged: (value) {
-                            controller.confirmPassword.value = value;
-                          },
-                          decoration: const InputDecoration(
-                              labelText: "Confirm password*"),
-                        ),
+                        //confirm password field-->
+
+                        Obx(() {
+                          return CustomTextfield(
+                            hintText: 'Confirm password',
+                            inputType: TextInputType.visiblePassword,
+                            onChanged: (value) {
+                              controller.confirmPassword.value = value;
+                            },
+                            validator: InputValidator.validatePassword,
+                            suffixIcon: IconButton(
+                                onPressed: controller.isPassSecureFunc,
+                                icon: Icon(controller.isSecure == true
+                                    ? Icons.visibility_off
+                                    : Icons.visibility)),
+                            isObsecure: controller.isSecure.value,
+                          );
+                        }),
+
                         const SizedBox(height: 15),
 
-                        ///Signup button...
-                        AppButton(
-                            text: 'Sign Up',
-                            ontap: () {
-                              if (_formKey.currentState!.validate()) {
-                                _formKey.currentState!.save();
-                                controller.register();
-                              }
-                            })
+                        //Signup button-->
+
+                        Obx(() {
+                          return controller.isLoading.value
+                              ? CircularProgressIndicator(
+                                  color: AppColors.primaryColor,
+                                )
+                              : customButton(
+                                  name: 'Sign Up',
+                                  onCallBack: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      if (controller.password.value ==
+                                          controller.confirmPassword.value) {
+                                        controller.register();
+                                      } else {
+                                        errorToast('Password do not match');
+                                      }
+                                    }
+                                  },
+                                  context: context);
+                        }),
                       ],
                     ),
                   )

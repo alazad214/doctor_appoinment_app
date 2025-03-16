@@ -1,6 +1,8 @@
+import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants.dart';
 import '../../logic/controller/main controller/main_screen_controller.dart';
 import '../appointment/views/my_appointment_screen.dart';
@@ -29,21 +31,21 @@ class MainScreen extends StatelessWidget {
             child: SafeArea(
                 child: GNav(
                     haptic: true,
-                    tabBorderRadius: 15,
+                    tabBorderRadius: 10,
                     curve: Curves.ease,
-                    duration: const Duration(milliseconds: 350),
+                    duration: const Duration(milliseconds: 1),
                     gap: 8,
                     color: Colors.grey[800],
                     activeColor: Colors.white,
                     iconSize: 24,
-                    tabBackgroundColor: Colors.deepOrange,
+                    tabBackgroundColor: AppColors.primaryColor,
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 15 / 2),
+                        horizontal: 5, vertical: 15 / 2),
                     tabs: const [
-                      GButton(icon: Icons.home, text: 'Home'),
-                      GButton(icon: Icons.people, text: 'Doctors'),
+                      GButton(icon: Iconsax.home, text: 'Home'),
+                      GButton(icon: Iconsax.people, text: 'Doctors'),
                       GButton(icon: Icons.content_paste, text: 'Appointment'),
-                      GButton(icon: Icons.person, text: 'Profile')
+                      GButton(icon: Iconsax.user, text: 'Profile')
                     ],
                     onTabChange: (index) {
                       controller.onTabChange(index);

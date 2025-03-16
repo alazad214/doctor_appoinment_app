@@ -7,30 +7,32 @@ class SettingItemCard extends StatelessWidget {
     this.text,
     this.iconSrc,
     this.onChanged,
-    this.child,
     this.icon,
   });
 
   final String? text, iconSrc;
 
   final VoidCallback? onChanged;
-  final Widget? child;
+
   final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 1),
-      decoration: const BoxDecoration(color: Colors.white),
-      child: ListTile(
+    return GestureDetector(
+      onTap: onChanged,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 1),
+        decoration: const BoxDecoration(color: Colors.white),
+        child: ListTile(
           contentPadding: const EdgeInsets.symmetric(
               horizontal: defaultPadding, vertical: defaultPadding / 2),
           leading: Container(
-            padding: const EdgeInsets.all(5),
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
                 color: primaryColor, borderRadius: BorderRadius.circular(4)),
             child: Icon(
               icon,
+              size: 20,
               color: Colors.white,
             ),
           ),
@@ -38,7 +40,8 @@ class SettingItemCard extends StatelessWidget {
             text ?? '',
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          trailing: child),
+        ),
+      ),
     );
   }
 }

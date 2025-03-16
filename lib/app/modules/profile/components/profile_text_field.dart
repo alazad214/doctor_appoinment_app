@@ -1,5 +1,5 @@
+import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../utils/constants.dart';
 
 class ProfileTextField extends StatelessWidget {
@@ -36,7 +36,7 @@ class ProfileTextField extends StatelessWidget {
             child: Text(
               fieldName ?? '',
               style: const TextStyle(
-                  color: primaryColor,
+                  color: AppColors.primaryColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w500),
             ),

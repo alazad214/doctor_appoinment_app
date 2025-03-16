@@ -1,7 +1,7 @@
 import 'package:doctor_appointment/app/modules/auth/views/sign_in_screen.dart';
 import 'package:doctor_appointment/utils/app_image.dart';
-import 'package:doctor_appointment/widgets/app_button.dart';
-import 'package:doctor_appointment/widgets/app_button2.dart';
+import 'package:doctor_appointment/widgets/app_colors.dart';
+import 'package:doctor_appointment/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -30,12 +30,26 @@ class SplashScreen extends StatelessWidget {
                   const Spacer(),
                   Image.asset(AppImage.appLogo, width: screenSize.width / 2),
                   const Spacer(),
-                  AppButton(
-                      text: 'Sign up',
-                      ontap: () => Get.to(() =>  SignUpScreen())),
-                  AppButton2(
-                      text: 'Sign in',
-                      ontap: () => Get.to(() =>  SignInScreen()))
+                  customButton(
+                      name: 'Register',
+                      onCallBack: () {
+                        Get.to(() => SignUpScreen());
+                      },
+                      context: context),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  customButton(
+                      name: 'SignIn',
+                      color: Colors.transparent,
+                      textStyle: TextStyle(
+                          color: AppColors.cBlack,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                      onCallBack: () {
+                        Get.to(() => SignInScreen());
+                      },
+                      context: context),
                 ],
               ),
             ),
