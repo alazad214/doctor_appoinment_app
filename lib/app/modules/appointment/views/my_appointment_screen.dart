@@ -3,9 +3,6 @@ import 'package:doctor_appointment/app/modules/appointment/components/appointmen
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/constants.dart';
-import '../components/appointment_info.dart';
-
-
 
 class MyAppointmentScreen extends StatelessWidget {
   MyAppointmentScreen({super.key});

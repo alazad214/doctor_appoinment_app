@@ -20,7 +20,14 @@ class SectionTitle extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-              color: textColor, fontWeight: FontWeight.w600, fontSize: 16),
+              color: textColor, fontWeight: FontWeight.w700, fontSize: 18),
+        ),
+        TextButton(
+          onPressed: pressOnSeeAll,
+          child: const Text(
+            "See All",
+            style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
+          ),
         ),
       ],
     );

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../../utils/constants.dart';
+import '../../../logic/controller/search/search_controller.dart';
 import '../views/search_result_screen.dart';
 
 class SearchForm extends StatelessWidget {
@@ -54,8 +55,30 @@ class SearchForm extends StatelessWidget {
       ),
     );
   }
-
 }
 
+List<String> doctorSpecialists = [
+  "Cardiologist",
+  "Dermatologist",
+  "Pediatrician",
+  "Neurologist",
+  "Orthopedic Surgeon",
+  "Ophthalmologist",
+  "Psychiatrist",
+  "Gastroenterologist",
+  "Radiologist",
+  "Endocrinologist",
+];
 
-
+List<String> doctorAreas = [
+  "Cardiology",
+  "Dermatology",
+  "Pediatrics",
+  "Neurology",
+  "Orthopedics",
+  "Ophthalmology",
+  "Psychiatry",
+  "Gastroenterology",
+  "Radiology",
+  "Endocrinology",
+];

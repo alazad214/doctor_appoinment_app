@@ -2,10 +2,14 @@ import 'package:doctor_appointment/app/modules/article/views/article_card.dart';
 import 'package:doctor_appointment/app/modules/home/components/drawer.dart';
 import 'package:doctor_appointment/utils/app_icon.dart' show searchIcon;
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../../utils/constants.dart';
 import '../../search/views/search_screen.dart';
+=======
+import 'package:flutter_svg/svg.dart';
+>>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
 import '../../../../utils/app_image.dart';
 import '../../../../widgets/custom_app_bar.dart';
 import '../components/available_doctors.dart';
@@ -33,6 +37,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: SafeArea(
+<<<<<<< HEAD
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -58,6 +63,35 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
+=======
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            SvgPicture.asset(
+              AppImage.appBg,
+              fit: BoxFit.cover,
+            ),
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  const CustomAppBar(),
+
+                  ///Suggest Doctor...
+                  const BannerCard(),
+
+                  ///Category...
+                  const Categories(),
+
+                  ///Available Doctor...
+                  AvailableDoctors(),
+
+                  ///Heath Article and Tips...
+                  const ArticleCard()
+                ],
+              ),
+            ),
+          ],
+>>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
         ),
       ),
     );

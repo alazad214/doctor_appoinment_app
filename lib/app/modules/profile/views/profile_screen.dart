@@ -16,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
+<<<<<<< HEAD
 
           "My Info",
           style: TextStyle(
@@ -26,6 +27,11 @@ class ProfileScreen extends StatelessWidget {
 
   
 
+=======
+          "Profile",
+          style: TextStyle(
+              color: textColor, fontWeight: FontWeight.w500, fontSize: 16),
+>>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -62,7 +68,17 @@ class ProfileScreen extends StatelessWidget {
                 },
               ),
 
+<<<<<<< HEAD
           
+=======
+            CircleAvatar(
+              radius: 60,
+              backgroundImage: controller.userImage.value != ''
+                  ? NetworkImage(
+                      controller.userImage.value,
+                    )
+                  : AssetImage('assets/images/avatar.jpg'),
+>>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
 
             ),
             const SizedBox(height: defaultPadding),

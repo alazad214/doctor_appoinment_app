@@ -82,10 +82,6 @@ class ProfileController extends GetxController {
 
       if (querySnapshot.docs.isNotEmpty) {
         var userData = querySnapshot.docs[0].data() as Map<String, dynamic>;
-
-
-        // Set values in variables
-
         username.value = userData['userName'];
         email.value = userData['email'];
         userImage.value = userData['photos'];
@@ -101,41 +97,7 @@ class ProfileController extends GetxController {
         bloodGroupController.text = bloodGroup.value;
 
         address.value = userData['bloodGroup'];
-
-
       }
-    }
-  }
-
-  // 🔥 Update Profile in Firestore
-  Future<void> updateProfile() async {
-    if (currentUser != null) {
-      String? imageUrl = await imageUploadByFirebase();
-
-      if (imageUrl == null) {
-        errorToast('Image upload failed!');
-
-        return;
-      }
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(currentUser!.uid)
-          .update({
-        'userName': nameController.text,
-        'phone': phoneController.text,
-        'address': addressController.text,
-        'photos': imageUrl,
-        'bloodGroup': bloodGroupController.text,
-      });
-
-      // Update values in UI
-      username.value = nameController.text;
-      phoneNumber.value = phoneController.text;
-      address.value = addressController.text;
-      bloodGroup.value = bloodGroupController.text;
-
-      Get.snackbar("Success", "Profile updated successfully",
-          snackPosition: SnackPosition.BOTTOM);
     }
   }
 }

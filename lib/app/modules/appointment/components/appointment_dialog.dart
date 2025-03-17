@@ -1,6 +1,8 @@
+
 import 'package:doctor_appointment/app/modules/appointment/components/appoint_info.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/constants.dart';
+
 
 void appointmentDialog(
   BuildContext context,
@@ -14,6 +16,9 @@ void appointmentDialog(
 ) {
   showDialog(
     context: context,
+
+    barrierDismissible: false,
+
     builder: (BuildContext context) {
       return Dialog(
         elevation: 20,
