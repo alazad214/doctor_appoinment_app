@@ -1,4 +1,4 @@
-import 'package:doctor_appointment/app/logic/controller/search_controller.dart' show DoctorSearchController;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

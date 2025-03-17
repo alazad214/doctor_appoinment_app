@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_appointment/app/modules/appointment/components/appointment_dialog.dart';
+import 'package:doctor_appointment/app/modules/appointment/components/appointment_info.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/constants.dart';

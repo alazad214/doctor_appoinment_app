@@ -83,7 +83,7 @@ class EditProfile extends StatelessWidget {
             const SizedBox(height: defaultPadding),
             ElevatedButton(
               onPressed: () {
-                controller.updateProfile();
+                // controller.updateProfile();
               },
               child: const Text("Save Changes"),
             ),

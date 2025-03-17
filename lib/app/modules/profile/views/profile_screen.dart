@@ -1,7 +1,6 @@
 import 'package:doctor_appointment/app/logic/controller/profile/profile_controller.dart';
 import 'package:doctor_appointment/app/modules/profile/components/profile_text_field.dart';
-import 'package:doctor_appointment/app/modules/profile/views/edit_profile.dart'
-    show EditProfile;
+import 'package:doctor_appointment/app/modules/profile/views/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -16,22 +15,12 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-<<<<<<< HEAD
-
           "My Info",
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.w500,
             fontSize: 20,
           ),
-
-  
-
-=======
-          "Profile",
-          style: TextStyle(
-              color: textColor, fontWeight: FontWeight.w500, fontSize: 16),
->>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -50,7 +39,6 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-
             Container(
               clipBehavior: Clip.antiAlias,
               height: 120,
@@ -67,19 +55,6 @@ class ProfileScreen extends StatelessWidget {
                   );
                 },
               ),
-
-<<<<<<< HEAD
-          
-=======
-            CircleAvatar(
-              radius: 60,
-              backgroundImage: controller.userImage.value != ''
-                  ? NetworkImage(
-                      controller.userImage.value,
-                    )
-                  : AssetImage('assets/images/avatar.jpg'),
->>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
-
             ),
             const SizedBox(height: defaultPadding),
             ProfileTextField(

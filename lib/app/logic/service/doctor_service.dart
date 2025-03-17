@@ -20,14 +20,9 @@ class FirestoreService {
   /// Doctors by category
   Future<List<DoctorModel>> searchDoctorsByCategory(String category) async {
     QuerySnapshot snapshot =
-<<<<<<< HEAD
+
     await doctorCollection.where('category', isEqualTo: category).get();
     return snapshot.docs.map((doc) => DoctorModel.fromFirestore(doc)).toList();
   }
 }
-=======
-        await doctorCollection.where('category', isEqualTo: category).get();
-    return snapshot.docs.map((doc) => DoctorModel.fromFirestore(doc)).toList();
-  }
-}
->>>>>>> 699577075ab69356602e4c01693a8ba4bb695b8d
+
