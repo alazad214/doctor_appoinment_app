@@ -16,12 +16,16 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
+
           "My Info",
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.w500,
             fontSize: 20,
           ),
+
+  
+
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
@@ -40,13 +44,26 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding),
         child: Column(
           children: [
-            CircleAvatar(
-              radius: 60,
-              backgroundImage: controller.userImage.value != ''
-                  ? NetworkImage(
-                      controller.userImage.value,
-                    )
-                  : AssetImage('assets/images/avatar.jpg'),
+
+            Container(
+              clipBehavior: Clip.antiAlias,
+              height: 120,
+              width: 120,
+              decoration: const BoxDecoration(
+                  color: Colors.blue, shape: BoxShape.circle),
+              child: Image.network(
+                controller.userImage.value,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/images/profile.png',
+                    fit: BoxFit.cover,
+                  );
+                },
+              ),
+
+          
+
             ),
             const SizedBox(height: defaultPadding),
             ProfileTextField(

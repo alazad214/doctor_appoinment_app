@@ -83,12 +83,15 @@ class ProfileController extends GetxController {
       if (querySnapshot.docs.isNotEmpty) {
         var userData = querySnapshot.docs[0].data() as Map<String, dynamic>;
 
+
         // Set values in variables
+
         username.value = userData['userName'];
         email.value = userData['email'];
         userImage.value = userData['photos'];
         phoneNumber.value = userData['phone'];
         address.value = userData['address'];
+
         bloodGroup.value = userData['bloodGroup'];
 
         // Set values in controllers for editing
@@ -96,6 +99,10 @@ class ProfileController extends GetxController {
         phoneController.text = phoneNumber.value;
         addressController.text = address.value;
         bloodGroupController.text = bloodGroup.value;
+
+        address.value = userData['bloodGroup'];
+
+
       }
     }
   }

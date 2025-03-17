@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../../utils/constants.dart';
 
 class AppointmentInfo extends StatelessWidget {
@@ -15,7 +16,7 @@ class AppointmentInfo extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: 12,
-            color: textColor.withAlpha((0.62 * 255).toInt()),
+            color: textColor.withOpacity(0.62),
           ),
         ),
         Text(

@@ -49,7 +49,7 @@ class BannerCard extends StatelessWidget {
                                     image: NetworkImage(data['image']),
                                     fit: BoxFit.cover)),
                             child: Container(
-                                color: Colors.white70,
+                                color: Colors.white38,
                                 alignment: Alignment.bottomLeft,
                                 padding: const EdgeInsets.all(10),
                                 child: Text(data['title'],

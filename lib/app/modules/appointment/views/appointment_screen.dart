@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_appointment/app/logic/controller/appointment%20controller/appointment_controller.dart';
-import 'package:doctor_appointment/app/modules/main/main_screen.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
+import 'package:doctor_appointment/widgets/successfull_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../style/toast_style.dart';
@@ -81,18 +81,19 @@ class AppointmentScreen extends StatelessWidget {
                 child: const Text("Confirm Appointment"),
                 onPressed: () {
                   if (controller.selectedDay.value.isNotEmpty &&
-                      controller.selectedTime.value != Timestamp.now() &&
+                      controller.selectedTime.value != Timestamp(0, 0) &&
                       controller.name.value.isNotEmpty &&
                       controller.number.value.isNotEmpty &&
                       controller.problem.value.isNotEmpty) {
-                    controller.saveAppointment(doctor.name);
                     appDialog(
                         context,
                         Image.asset('assets/icons/success.png', height: 40),
                         "Appointment Cofirm",
                         "Your appointment has been confirmed. You will be contacted very soon.",
-                        "Go Home", () {
-                      Get.offAll(() => MainScreen());
+                        "Confirm", () async {
+                      Get.offAll(() => const SuccessfullScreen());
+
+                      controller.saveAppointment(doctor.name);
                     });
                   } else {
                     errorToast('Please fill all the fields before confirming.');

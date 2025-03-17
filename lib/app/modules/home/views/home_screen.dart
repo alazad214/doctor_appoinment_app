@@ -2,10 +2,12 @@ import 'package:doctor_appointment/app/modules/article/views/article_card.dart';
 import 'package:doctor_appointment/app/modules/home/components/drawer.dart';
 import 'package:doctor_appointment/utils/app_icon.dart' show searchIcon;
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../../utils/constants.dart';
 import '../../search/views/search_screen.dart';
+import '../../../../utils/app_image.dart';
+import '../../../../widgets/custom_app_bar.dart';
 import '../components/available_doctors.dart';
 import '../../category/components/categories.dart';
 import '../components/banner.dart';
@@ -23,8 +25,10 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () => Get.to(() => const SearchScreen()),
-            icon: SvgPicture.asset(searchIcon,
-                colorFilter: ColorFilter.mode(primaryColor, BlendMode.srcIn)),
+            icon: SvgPicture.asset(
+              searchIcon,
+              colorFilter: ColorFilter.mode(primaryColor, BlendMode.srcIn),
+            ),
           ),
         ],
       ),
@@ -32,17 +36,26 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ///Suggest Doctor...
-              BannerCard(),
-
-              ///Category...
-              Categories(),
-
-              ///Available Doctor...
-              AvailableDoctors(),
-
-              ///Heath Article and Tips...
-              ArticleCard()
+              Stack(
+                fit: StackFit.expand,
+                children: [
+                  SvgPicture.asset(
+                    AppImage.appBg,
+                    fit: BoxFit.cover,
+                  ),
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const CustomAppBar(),
+                        const BannerCard(),
+                        const Categories(),
+                        AvailableDoctors(),
+                        const ArticleCard(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
