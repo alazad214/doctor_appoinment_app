@@ -1,5 +1,6 @@
 import 'package:doctor_appointment/app/modules/article/views/article_card.dart';
 import 'package:doctor_appointment/app/modules/home/components/drawer.dart';
+import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -8,21 +9,33 @@ import '../../../../utils/constants.dart';
 import '../../search/views/search_screen.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../utils/app_image.dart';
-import '../../../../widgets/custom_app_bar.dart';
 import '../components/available_doctors.dart';
 import '../../category/components/categories.dart';
 import '../components/banner.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final Function doctorSeeMore;
+  final Function healthSeeMore;
+  const HomePage({
+    super.key,
+    required this.doctorSeeMore,
+    required this.healthSeeMore,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: CustomDrawer(),
       appBar: AppBar(
-        title: Text('Aroggo Talk'),
+        title: Text(
+          'Aroggo Talk',
+          style: TextStyle(
+              color: AppColors.c000000,
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.transparent,
+        titleSpacing: 0,
         actions: [
           IconButton(
             onPressed: () => Get.to(() => const SearchScreen()),
@@ -33,25 +46,32 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: SafeArea(
           child: Column(
             children: [
               Stack(
-                fit: StackFit.expand,
                 children: [
-                  SvgPicture.asset(
-                    AppImage.appBg,
-                    fit: BoxFit.cover,
+                  SizedBox(
+                    height: Get.height / 1,
+                    width: Get.width / 1,
+                    child: SvgPicture.asset(
+                      AppImage.appBg,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   SingleChildScrollView(
                     child: Column(
                       children: [
-                        const CustomAppBar(),
+                        SizedBox(height: 20),
                         const BannerCard(),
                         const Categories(),
-                        AvailableDoctors(),
-                        const ArticleCard(),
+                        AvailableDoctors(
+                          doctorSeeMore: doctorSeeMore,
+                        ),
+                        ArticleCard(
+                          healthSeeMore: healthSeeMore,
+                        ),
                       ],
                     ),
                   ),

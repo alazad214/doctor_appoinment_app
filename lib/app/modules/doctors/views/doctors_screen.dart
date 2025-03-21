@@ -1,10 +1,13 @@
 import 'package:doctor_appointment/app/modules/details/views/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../utils/app_icon.dart';
 import '../../../../utils/constants.dart';
-import '../../../../widgets/custom_app_bar.dart';
+import '../../../../widgets/app_colors.dart';
 import '../../../logic/model/doctor_model.dart';
 import '../../../logic/service/doctor_service.dart';
+import '../../search/views/search_screen.dart';
 
 class DoctorsScreen extends StatelessWidget {
   DoctorsScreen({super.key});
@@ -13,11 +16,32 @@ class DoctorsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Doctors',
+          style: TextStyle(
+              color: AppColors.c000000,
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.transparent,
+   
+        actions: [
+          IconButton(
+            onPressed: () => Get.to(() => const SearchScreen()),
+            icon: SvgPicture.asset(
+              searchIcon,
+              colorFilter: ColorFilter.mode(primaryColor, BlendMode.srcIn),
+            ),
+          ),
+        ],
+      ),
+     
+     
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             children: [
-              const CustomAppBar(),
               FutureBuilder(
                   future: firestoreService.getDoctors(),
                   builder: (context, snapshot) {

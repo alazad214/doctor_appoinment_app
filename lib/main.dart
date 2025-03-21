@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:toastification/toastification.dart';
 import 'app/modules/splash/splash_screen.dart';
 import 'firebase_options.dart';
 import 'utils/app_theme.dart';
@@ -23,11 +24,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return ToastificationWrapper(
+        child: GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Aroggo Talk',
       theme: AppTheme.light(context),
       home: currentUser == null ? const SplashScreen() : MainScreen(),
-    );
+    ));
   }
 }

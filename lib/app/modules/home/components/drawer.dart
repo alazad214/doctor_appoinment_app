@@ -1,3 +1,4 @@
+import 'package:doctor_appointment/app/modules/appointment/views/my_appointment_screen.dart';
 import 'package:doctor_appointment/app/modules/settings/views/password_change.dart';
 import 'package:doctor_appointment/app/modules/settings/views/privacy_policy_screen.dart'
     show PolicyScreen;
@@ -38,6 +39,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
             ),
             SizedBox(height: 25),
             Divider(),
+            drawerItem(context, icon: Iconsax.calendar, text: 'My Appointment',
+                onTap: () {
+              Get.to(() => MyAppointmentScreen());
+            }),
+        
             drawerItem(context, icon: Iconsax.edit, text: 'Password Change',
                 onTap: () {
               Get.to(() => PasswordChange());

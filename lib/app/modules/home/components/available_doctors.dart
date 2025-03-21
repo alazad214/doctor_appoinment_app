@@ -6,10 +6,11 @@ import '../../../../utils/constants.dart';
 import '../../../../widgets/section_title.dart';
 import '../../../logic/service/doctor_service.dart';
 import '../../details/views/doctor_details_screen.dart';
-import '../../doctors/views/doctors_screen.dart';
 
 class AvailableDoctors extends StatelessWidget {
-  AvailableDoctors({super.key});
+  final Function? doctorSeeMore;
+
+  AvailableDoctors({super.key, required this.doctorSeeMore});
 
   final firestoreService = FirestoreService();
 
@@ -24,7 +25,7 @@ class AvailableDoctors extends StatelessWidget {
           child: SectionTitle(
             title: "Available Doctor",
             pressOnSeeAll: () {
-              Get.to(() => DoctorsScreen());
+              doctorSeeMore!();
             },
           ),
         ),

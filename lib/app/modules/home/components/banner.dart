@@ -42,22 +42,30 @@ class BannerCard extends StatelessWidget {
                       child: Card(
                         color: Colors.white,
                         clipBehavior: Clip.antiAlias,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            side: BorderSide(
+                                width: 2,
+                                color: Colors.primaries[
+                                    index % Colors.primaries.length])),
                         child: Container(
                             clipBehavior: Clip.antiAlias,
                             decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: NetworkImage(data['image']),
-                                    fit: BoxFit.cover)),
+                              image: DecorationImage(
+                                image: NetworkImage(data['image']),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                             child: Container(
-                                color: Colors.white38,
+                                color: Colors.white54,
                                 alignment: Alignment.bottomLeft,
-                                padding: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(6),
                                 child: Text(data['title'],
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                     style: const TextStyle(
                                         color: textColor,
-                                        fontSize: 12,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.w700)))),
                       ),
                     ),

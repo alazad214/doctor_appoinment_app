@@ -4,6 +4,7 @@ import 'package:doctor_appointment/app/modules/appointment/components/appointmen
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/constants.dart';
+import '../../../../widgets/app_colors.dart';
 
 class MyAppointmentScreen extends StatelessWidget {
   MyAppointmentScreen({super.key});
@@ -13,16 +14,17 @@ class MyAppointmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      /// AppBar...
       appBar: AppBar(
-        title: const Text(
-          "My Appointment",
+        title: Text(
+          'My Appointment',
           style: TextStyle(
-            color: textColor,
-            fontWeight: FontWeight.w500,
-            fontSize: 16,
-          ),
+              color: AppColors.c000000,
+              fontSize: 18,
+              fontWeight: FontWeight.bold),
         ),
+        backgroundColor: Colors.transparent,
+        titleSpacing: 0,
+        actions: [],
       ),
 
       /// Body...

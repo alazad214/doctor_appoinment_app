@@ -1,8 +1,7 @@
-
+import 'package:doctor_appointment/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import '../../../../utils/constants.dart';
+import 'package:toastification/toastification.dart';
 import '../../../logic/controller/search/search_controller.dart';
 import '../views/search_result_screen.dart';
 
@@ -17,14 +16,14 @@ class SearchForm extends StatelessWidget {
       child: Column(
         children: [
           Obx(
-            () => DropdownButtonFormField<String>(
+            () => DropdownButtonFormField(
               value: controller.selectedCategory.value.isEmpty
                   ? null
                   : controller.selectedCategory.value,
               hint: const Text("Select Specialist"),
-              icon: SvgPicture.asset("assets/icons/stethoscope.svg"),
+              icon: Icon(Icons.arrow_drop_down),
               items: controller.categories.map((String category) {
-                return DropdownMenuItem<String>(
+                return DropdownMenuItem(
                   value: category,
                   child: Text(category),
                 );
@@ -34,23 +33,25 @@ class SearchForm extends StatelessWidget {
               },
             ),
           ),
-          const SizedBox(height: defaultPadding),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: defaultPadding),
-            child: ElevatedButton(
-              onPressed: () {
+          const SizedBox(height: 40),
+          customButton(
+              name: 'Search',
+              onCallBack: () {
                 if (controller.selectedCategory.value.isNotEmpty) {
                   Get.to(
                     () => SearchResultScreen(
                         category: controller.selectedCategory.value),
                   );
                 } else {
-                  Get.snackbar("Error", "Please select a category");
+                  Toastification().show(
+                    title: Text('Selection Error'),
+                    description: Text('Please Select the category'),
+                    type: ToastificationType.error,
+                    autoCloseDuration: Duration(seconds: 3),
+                  );
                 }
               },
-              child: const Text("Search"),
-            ),
-          ),
+              context: context)
         ],
       ),
     );

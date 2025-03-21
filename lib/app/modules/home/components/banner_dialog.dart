@@ -1,4 +1,6 @@
+import 'package:doctor_appointment/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 void bannerDialog(
   BuildContext context,
@@ -7,7 +9,7 @@ void bannerDialog(
 ) {
   showDialog(
     context: context,
-    barrierDismissible: false,
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return Dialog(
         elevation: 20,
@@ -16,16 +18,16 @@ void bannerDialog(
             padding: const EdgeInsets.all(15),
             width: double.infinity,
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                color: Colors.white, borderRadius: BorderRadius.circular(6)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  width: 80,
-                  height: 80,
+                  height: 100,
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.lightBlue.shade300),
+                      color: Colors.lightBlue.shade300,
+                      borderRadius: BorderRadius.circular(6)),
                   child: child,
                 ),
                 const SizedBox(height: 15),
@@ -39,20 +41,12 @@ void bannerDialog(
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'back',
-                        style: TextStyle(fontSize: 16, color: Colors.black),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
+                customButton(
+                    name: 'Back',
+                    onCallBack: () {
+                      Get.back();
+                    },
+                    context: context)
               ],
             ),
           ),

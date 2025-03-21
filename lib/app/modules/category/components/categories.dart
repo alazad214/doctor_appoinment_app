@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_appointment/app/modules/category/views/category_screen.dart';
+import 'package:doctor_appointment/app/modules/search/views/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../widgets/section_title.dart';
@@ -18,7 +19,9 @@ class Categories extends StatelessWidget {
               const EdgeInsets.only(top: 30, bottom: 5, right: 15, left: 15),
           child: SectionTitle(
             title: "Categories",
-            pressOnSeeAll: () {},
+            pressOnSeeAll: () {
+              Get.to(() => SearchScreen());
+            },
           ),
         ),
         StreamBuilder<QuerySnapshot>(

@@ -6,8 +6,10 @@ import '../../../../utils/constants.dart';
 import '../../../../widgets/section_title.dart';
 
 class ArticleCard extends StatelessWidget {
+  final Function healthSeeMore;
   const ArticleCard({
     super.key,
+    required this.healthSeeMore,
   });
 
   @override
@@ -41,7 +43,9 @@ class ArticleCard extends StatelessWidget {
                   top: 30, bottom: 5, right: 15, left: 15),
               child: SectionTitle(
                 title: "Health Tips",
-                pressOnSeeAll: () {},
+                pressOnSeeAll: () {
+                  healthSeeMore();
+                },
               ),
             ),
             SingleChildScrollView(
