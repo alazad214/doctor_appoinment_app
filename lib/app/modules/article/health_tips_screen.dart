@@ -54,6 +54,8 @@ class HealthTipsScreen extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
+                    color: Colors.white,
+                    elevation: 0,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

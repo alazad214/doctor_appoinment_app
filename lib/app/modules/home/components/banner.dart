@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_appointment/app/modules/home/components/banner_dialog.dart';
 import 'package:doctor_appointment/utils/constants.dart';
+import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 class BannerCard extends StatelessWidget {
   const BannerCard({
@@ -43,30 +45,42 @@ class BannerCard extends StatelessWidget {
                         color: Colors.white,
                         clipBehavior: Clip.antiAlias,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            side: BorderSide(
-                                width: 2,
-                                color: Colors.primaries[
-                                    index % Colors.primaries.length])),
+                          borderRadius: BorderRadius.circular(5),
+                          // side: BorderSide(
+                          //   width: 2,
+                          //   color: Colors
+                          //       .primaries[index % Colors.primaries.length],
+                          // ),
+                        ),
                         child: Container(
-                            clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(data['image']),
-                                fit: BoxFit.cover,
-                              ),
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(data['image']),
+                              fit: BoxFit.cover,
                             ),
-                            child: Container(
-                                color: Colors.white54,
-                                alignment: Alignment.bottomLeft,
-                                padding: const EdgeInsets.all(6),
-                                child: Text(data['title'],
+                          ),
+                          child: Container(
+                              color: Colors.white54,
+                              alignment: Alignment.bottomLeft,
+                              padding: const EdgeInsets.all(6),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    data['title'],
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
-                                    style: const TextStyle(
-                                        color: textColor,
+                                    style:  TextStyle(
+                                        color: Colors.black,
                                         fontSize: 14,
-                                        fontWeight: FontWeight.w700)))),
+                                        fontWeight: FontWeight.w700),
+                                  ),
+
+                                ],
+                              )),
+                        ),
                       ),
                     ),
                   );

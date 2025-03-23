@@ -43,11 +43,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 onTap: () {
               Get.to(() => MyAppointmentScreen());
             }),
-        
-            drawerItem(context, icon: Iconsax.edit, text: 'Password Change',
-                onTap: () {
-              Get.to(() => PasswordChange());
-            }),
             drawerItem(context,
                 icon: Iconsax.security_safe, text: 'Privacy Policy', onTap: () {
               Get.to(() => const PolicyScreen());
@@ -57,31 +52,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 text: 'Terms & Conditions ', onTap: () {
               Get.to(() => const PolicyScreen());
             }),
-            drawerItem(context, icon: Iconsax.trash, text: 'Account Delete',
+            drawerItem(context, icon: Iconsax.logout, text: 'Logout',
                 onTap: () {
-              Get.to(() => const PolicyScreen());
+              appDialog(
+                  context,
+                  const Icon(Icons.logout, size: 40, color: Colors.white),
+                  'Sign Out Account',
+                  "Are you sure you want to sign out?",
+                  "Sign Out", () {
+                controller.signOut();
+              });
             }),
-            SizedBox(height: 30),
-            Divider(),
-            SizedBox(height: 30),
-            Align(
-              alignment: Alignment.center,
-              child: customButton(
-                  name: 'Sign Out',
-                  minWidth: 160,
-                  height: 40,
-                  onCallBack: () {
-                    appDialog(
-                        context,
-                        const Icon(Icons.logout, size: 40, color: Colors.white),
-                        'Sign Out Account',
-                        "Are you sure you want to sign out?",
-                        "Sign Out", () {
-                      controller.signOut();
-                    });
-                  },
-                  context: context),
-            ),
           ],
         ),
       ),
@@ -98,8 +79,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         leading: Icon(icon),
         title: Text(
           text,
-          style: TextStyle(
-              color: AppColors.activeColor, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w500),
         ),
       ),
     );
