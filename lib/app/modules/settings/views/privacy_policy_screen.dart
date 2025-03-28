@@ -17,11 +17,11 @@ class PolicyScreen extends StatelessWidget {
           "Privacy Policy",
           style: TextStyle(
             color: Colors.blueAccent,
-            fontSize: h * 0.03,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
-        centerTitle: true,
+        titleSpacing: 0,
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
@@ -38,7 +38,7 @@ class PolicyScreen extends StatelessWidget {
             final data = snapshot.data!.docs;
             return Stack(
               children: [
-                ///Top and bottom color circle design...
+         
                 bgCircle(w, h),
                 SingleChildScrollView(
                   padding: EdgeInsets.all(w * 0.06),

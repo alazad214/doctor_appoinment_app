@@ -15,7 +15,8 @@ class ProfileController extends GetxController {
   RxString phoneNumber = ''.obs;
   RxString address = ''.obs;
   RxString bloodGroup = ''.obs;
-  Uint8List? selectedFileByte;
+
+  Uint8List? selectedFileBytes;
   String? fileName;
 
   final auth = FirebaseAuth.instance;
@@ -35,7 +36,7 @@ class ProfileController extends GetxController {
     }
   }
 
-  Future<void> imagePick() async {
+  Future<void> pickImage() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.image,
       allowMultiple: false,
@@ -43,7 +44,7 @@ class ProfileController extends GetxController {
     );
 
     if (result != null) {
-      selectedFileByte = result.files.single.bytes;
+      selectedFileBytes = result.files.single.bytes;
       fileName = result.files.single.name;
       update();
     } else {
@@ -51,18 +52,18 @@ class ProfileController extends GetxController {
     }
   }
 
-  Future<String?> imageUploadByFirebase() async {
-    if (selectedFileByte == null || fileName == null) {
+  Future<String?> uploadImageToFirebase() async {
+    if (selectedFileBytes == null || fileName == null) {
       errorToast('No image selected');
       return null;
     }
 
     try {
       Reference storageRef = FirebaseStorage.instance.ref().child(
-            'profileImage/$fileName',
+            'profile_avatar/$fileName',
           );
 
-      UploadTask uploadTask = storageRef.putData(selectedFileByte!);
+      UploadTask uploadTask = storageRef.putData(selectedFileBytes!);
       TaskSnapshot snapshot = await uploadTask;
 
       return await snapshot.ref.getDownloadURL();
@@ -87,7 +88,6 @@ class ProfileController extends GetxController {
         userImage.value = userData['photos'];
         phoneNumber.value = userData['phone'];
         address.value = userData['address'];
-
         bloodGroup.value = userData['bloodGroup'];
 
         // Set values in controllers for editing
@@ -97,6 +97,41 @@ class ProfileController extends GetxController {
         bloodGroupController.text = bloodGroup.value;
 
         address.value = userData['bloodGroup'];
+      }
+    }
+  }
+
+  Future<void> updateUserData() async {
+    if (currentUser != null) {
+      String userEmail = currentUser!.email!;
+
+      try {
+        String? imageUrl = await uploadImageToFirebase();
+
+        if (imageUrl == null) {
+          errorToast('Image upload failed!');
+          return;
+        }
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .where('email', isEqualTo: userEmail)
+            .get()
+            .then((querySnapshot) {
+          if (querySnapshot.docs.isNotEmpty) {
+            querySnapshot.docs.first.reference.update({
+              'userName': nameController.text,
+              'phone': phoneController.text,
+              'address': addressController.text,
+              'photos': imageUrl,
+              'bloodGroup': bloodGroupController.text,
+            });
+            successToast('Profile updated successfully');
+            fetchUserData(); // Refresh data
+          }
+        });
+      } catch (e) {
+        errorToast('Failed to update profile: $e');
       }
     }
   }
