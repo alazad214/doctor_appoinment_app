@@ -47,18 +47,7 @@ class CalendarWidget extends StatelessWidget {
                             controller.selectedDay.value == availableDays[index]
                                 ? Colors.blue
                                 : Colors.white,
-                        border: Border.all(
-                          color: Colors.blue.withOpacity(0.5),
-                          width: 0.5,
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
+                   
                       ),
                       child: Text(
                         availableDays[index],

@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/section_title.dart';
 import '../../../logic/service/doctor_service.dart';
-import '../../details/views/doctor_details_screen.dart';
+import '../../doctors/views/doctor_details_screen.dart';
 
 class AvailableDoctors extends StatelessWidget {
   final Function? doctorSeeMore;

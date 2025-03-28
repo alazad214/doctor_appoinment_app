@@ -10,7 +10,7 @@ void appDialog(BuildContext context, Widget child, String title,
       return Dialog(
         elevation: 20,
         child: Container(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
           width: double.infinity,
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(6)),
@@ -61,14 +61,16 @@ void appDialog(BuildContext context, Widget child, String title,
                     onTap: ontap,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 5),
+                          horizontal: 15, vertical: 10),
                       decoration: BoxDecoration(
                           color: AppColors.primaryColor,
                           borderRadius: BorderRadius.circular(6)),
                       child: Text(
                         buttonText,
                         style: const TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w600),
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   )

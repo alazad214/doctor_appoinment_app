@@ -32,7 +32,7 @@ class TimeWidget extends StatelessWidget {
           shrinkWrap: true,
           itemCount: availableTimes.length,
           itemBuilder: (context, index) {
-            return InkWell(
+            return GestureDetector(
               onTap: () {
                 controller.selectTime(availableTimes[index]);
               },

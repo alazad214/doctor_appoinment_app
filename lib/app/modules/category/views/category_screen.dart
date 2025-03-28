@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
-
 import '../../../../utils/app_icon.dart';
 import '../../../../utils/constants.dart';
 import '../../../../widgets/app_colors.dart';
-import '../../../../widgets/custom_app_bar.dart';
 import '../../../logic/model/doctor_model.dart';
 import '../../../logic/service/doctor_service.dart';
-import '../../details/views/doctor_details_screen.dart';
+import '../../doctors/views/doctor_details_screen.dart';
 import '../../search/views/search_screen.dart';
 
 class CategoryScreen extends StatelessWidget {

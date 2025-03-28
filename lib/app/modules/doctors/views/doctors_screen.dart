@@ -1,4 +1,4 @@
-import 'package:doctor_appointment/app/modules/details/views/doctor_details_screen.dart';
+import 'package:doctor_appointment/app/modules/doctors/views/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';

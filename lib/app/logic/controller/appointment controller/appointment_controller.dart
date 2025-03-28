@@ -12,6 +12,7 @@ class AppointmentController extends GetxController {
   RxString name = ''.obs;
   RxString number = ''.obs;
   RxString problem = ''.obs;
+  RxString age = ''.obs;
 
   void selectDay(String day) {
     selectedDay.value = day;
@@ -29,6 +30,7 @@ class AppointmentController extends GetxController {
         'selected_time': selectedTime.value,
         'problem': problem.value,
         'patientName': name.value,
+        'age': age.value,
         'contactNumber': number.value,
         'email': currentUser?.email,
         'timestamp': FieldValue.serverTimestamp(),

@@ -1,14 +1,10 @@
 import 'package:doctor_appointment/app/modules/appointment/views/my_appointment_screen.dart';
-import 'package:doctor_appointment/app/modules/settings/views/password_change.dart';
-import 'package:doctor_appointment/app/modules/settings/views/privacy_policy_screen.dart'
-    show PolicyScreen;
+import 'package:doctor_appointment/app/modules/settings/views/privacy_policy_screen.dart';
 import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:doctor_appointment/widgets/app_dialog.dart';
-import 'package:doctor_appointment/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-
 import '../../../logic/controller/auth controller/logout_controller.dart';
 
 class CustomDrawer extends StatefulWidget {
@@ -45,11 +41,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
             }),
             drawerItem(context,
                 icon: Iconsax.security_safe, text: 'Privacy Policy', onTap: () {
-              Get.to(() => const PolicyScreen());
-            }),
-            drawerItem(context,
-                icon: Iconsax.document_text,
-                text: 'Terms & Conditions ', onTap: () {
               Get.to(() => const PolicyScreen());
             }),
             drawerItem(context, icon: Iconsax.logout, text: 'Logout',

@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doctor_appointment/app/modules/home/components/banner_dialog.dart';
-import 'package:doctor_appointment/utils/constants.dart';
-import 'package:doctor_appointment/widgets/app_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+
 
 class BannerCard extends StatelessWidget {
   const BannerCard({

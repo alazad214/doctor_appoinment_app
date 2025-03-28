@@ -11,8 +11,8 @@ class AppRating extends StatelessWidget {
       children: List.generate(5, (index) {
         return Icon(
           index < score ? Icons.star : Icons.star_border,
-          color: Colors.yellow.shade400,
-          size: 16,
+          color: Colors.amber,
+          size: 20,
         );
       }),
     );

@@ -12,6 +12,7 @@ class ProfileTextField extends StatelessWidget {
   final maxLine;
   final controller;
   final keyboardType;
+  final validator;
   const ProfileTextField(
       {super.key,
       this.initialValue,
@@ -22,7 +23,7 @@ class ProfileTextField extends StatelessWidget {
       this.fieldName,
       this.maxLine,
       this.controller,
-      this.keyboardType});
+      this.keyboardType, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class ProfileTextField extends StatelessWidget {
           TextFormField(
             maxLines: maxLine ?? 1,
             keyboardType: keyboardType,
+            validator: validator,
             controller: controller ?? TextEditingController(text: initialValue),
             readOnly: readOnly ?? false,
             decoration: InputDecoration(
@@ -55,7 +57,7 @@ class ProfileTextField extends StatelessWidget {
               fillColor: Colors.white54,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6),
-                borderSide: const BorderSide(color: Colors.transparent),
+                borderSide: const BorderSide(color: Colors.black12),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(6),
