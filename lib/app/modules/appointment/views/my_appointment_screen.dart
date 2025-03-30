@@ -27,7 +27,7 @@ class MyAppointmentScreen extends StatelessWidget {
         actions: [],
       ),
 
-      /// Body...
+      /// Body-->
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('appointments')
@@ -95,6 +95,38 @@ class MyAppointmentScreen extends StatelessWidget {
                                       title: "Type",
                                       text: "Dentiest",
                                     ),
+                                  ),
+                                  PopupMenuButton<int>(
+                                    onSelected: (value) {},
+                                    itemBuilder: (context) => [
+                                      PopupMenuItem(
+                                          value: 1,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              await FirebaseFirestore.instance
+                                                  .collection('appointments')
+                                                  .doc(data
+                                                      .id) // ডকুমেন্টের ID দিয়ে নির্দিষ্ট রেকর্ড খুঁজে বের করা
+                                                  .delete();
+                                              Navigator.pop(context);
+                                            },
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text('Delete'),
+                                                SizedBox(width: 10),
+                                                Icon(
+                                                  Icons.delete,
+                                                  color: AppColors.cEB001B,
+                                                )
+                                              ],
+                                            ),
+                                          )),
+                                    ],
+                                    icon: Icon(Icons.more_vert),
                                   ),
                                 ],
                               ),

@@ -1,8 +1,7 @@
-
 import 'package:doctor_appointment/app/modules/appointment/components/appoint_info.dart';
+import 'package:doctor_appointment/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import '../../../../utils/constants.dart';
-
 
 void appointmentDialog(
   BuildContext context,
@@ -16,9 +15,7 @@ void appointmentDialog(
 ) {
   showDialog(
     context: context,
-
     barrierDismissible: false,
-
     builder: (BuildContext context) {
       return Dialog(
         elevation: 20,
@@ -97,20 +94,14 @@ void appointmentDialog(
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'back',
-                        style: TextStyle(fontSize: 16, color: textColor),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
+                SizedBox(height: 20),
+                customButton(
+                    name: 'Back',
+                    onCallBack: () {
+                      Navigator.of(context).pop();
+                    },
+                    context: context),
+                SizedBox(width: 10),
               ],
             ),
           ),
